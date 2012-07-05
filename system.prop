@@ -1,0 +1,78 @@
+#
+# system.prop for GT-S5570
+#
+
+# Graphics
+view.fading_edge_length=8
+view.minimum_fling_velocity=25
+view.scroll_friction=0.008
+view.touch_slop=15
+ro.media.dec.jpeg.memcap=10000000
+ro.opengles.version=131072
+ro.sf.lcd_density=120
+media.stagefright.enable-player=true
+windowsmgr.max_events_per_sec=150
+debug.performance.tuning=1
+video.accelerate.hw=1
+ro.telephony.call_ring.delay=0
+ro.ril.disable.power.collapse=0
+persist.sys.use_dithering=1
+ro.sf.hwrotation=1
+persist.sys.purgeable_assets=1
+
+# RIL
+rild.libpath=/system/lib/libsec-ril.so
+rild.libargs=-d /dev/smd0
+ro.telephony.default_network=0
+ro.com.android.dataroaming=false
+ro.ril.hsxpa=1
+ro.ril.gprsclass=10
+
+#MM Camera
+ro.media.enc.vid.m4v.fps=5,15
+ro.media.enc.vid.m4v.width=176,320
+ro.media.enc.vid.m4v.height=144,240
+ro.media.enc.vid.m4v.bps=90000,770000
+ro.media.enc.vid.h264.fps=5,15
+ro.media.enc.vid.h264.width=176,320
+ro.media.enc.vid.h264.height=144,240
+ro.media.enc.vid.h264.bps=90000,770000
+ro.media.enc.vid.h263.fps=5,15
+ro.media.enc.vid.h263.width=176,320
+ro.media.enc.vid.h263.height=144,240
+ro.media.enc.vid.h263.bps=90000,770000
+
+ro.media.enc.vid.height.min = 144
+ro.media.enc.vid.height.max = 240
+ro.media.enc.vid.width.min = 176
+ro.media.enc.vid.width.max = 320
+ro.media.enc.vid.bps.min =90000
+ro.media.enc.vid.bps.max =770000
+ro.media.enc.vid.fps.min = 5
+ro.media.enc.vid.fps.max = 15
+
+# No Autofocus device
+ro.workaround.noautofocus=1
+
+DEVICE_PROVISIONED=1
+qemu.sf.lcd_density=120
+
+# Wifi interface
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=15
+
+# ro.telephony.ril_class=samsung
+mobiledata.interfaces=pdp0,gprs,ppp0,wlan0
+
+# System and Misc.
+ro.tether.denied=false
+sys.checkfs.fat=false
+ro.vold.umsdirtyratio=20
+dev.sfbootcomplete=0
+ro.com.google.locationfeatures=1
+ro.setupwizard.enable_bypass=1
+dalvik.vm.lockprof.threshold=500
+dalvik.vm.dexopt-flags=m=y
+dalvik.vm.heapsize=48m
+dalvik.vm.execution-mode=int:jit
+dalvik.vm.dexopt-data-only=1
