@@ -17,11 +17,23 @@
 # Product-specific compile-time definitions.
 #
 
-# Make touchscreen work
-BOARD_USE_LEGACY_TOUCHSCREEN := true
+include device/samsung/msm7x27-common/BoardConfigCommon.mk
 
-# Use the non-open-source parts, if they're present
--include vendor/samsung/tass/BoardConfigVendor.mk
+## Kernel, bootloader
+TARGET_BOOTLOADER_BOARD_NAME := tass
+TARGET_KERNEL_CONFIG := cyanogenmod_tass_defconfig
 
-# Use the parts that are common between all tass
-include device/samsung/tass/BoardConfigCommon.mk
+## Fonts and Bluetooth
+SMALLER_FONT_FOOTPRINT := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/tass/bluetooth
+
+## Assert
+TARGET_OTA_ASSERT_DEVICE := tass,GT-S5570
+
+## Recovery
+BOARD_LDPI_RECOVERY := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := "<font_7x16.h>"
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tass/recovery/recovery_ui.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/tass/recovery/graphics.c
+TARGET_RECOVERY_INITRC := device/samsung/tass/recovery/recovery.rc
+TARGET_RECOVERY_FSTAB := device/samsung/tass/recovery/recovery.fstab
