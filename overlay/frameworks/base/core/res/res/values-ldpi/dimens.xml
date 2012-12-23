@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="password_keyboard_key_height_alpha">35dip</dimen>
+    <dimen name="password_keyboard_key_height_numeric">35dip</dimen>
+    <dimen name="password_keyboard_spacebar_vertical_correction">1dip</dimen>
+    <dimen name="password_keyboard_horizontalGap">1dip</dimen>
+    <dimen name="password_keyboard_verticalGap">2dip</dimen>
+    <dimen name="keyguard_lockscreen_clock_font_size">70dip</dimen>
+    <dimen name="default_gap">1dip</dimen>
+    <dimen name="keyguard_lockscreen_status_line_clockfont_top_margin">1dip</dimen>
+    <dimen name="keyguard_lockscreen_status_line_clockfont_bottom_margin">1dip</dimen>
+
+    <dimen name="navigation_bar_height">29dp</dimen>
+    <dimen name="navigation_bar_height_landscape">29dp</dimen>
+</resources>
