@@ -1,19 +1,11 @@
 [
  {
-   "repository": "android_kernel_samsung_msm7x27",
-   "target_path": "kernel/samsung/msm7x27",
-   "branch": "cm-10.1"
- }, {
    "repository": "android_device_samsung_msm7x27-common",
    "target_path": "device/samsung/msm7x27-common",
    "branch": "cm-10.1"
  }, {
-   "repository": "android_vendor_samsung_tass",
+   "repository": "android_vendor_samsung",
    "target_path": "vendor/samsung/tass",
-   "branch": "cm-10.1"
- }, {
-   "repository": "android_vendor_samsung_msm7x27-common",
-   "target_path": "vendor/samsung/msm7x27-common",
    "branch": "cm-10.1"
  }, {
    "repository": "android_vendor_qcom_msm7x27",
