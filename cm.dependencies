@@ -5,7 +5,7 @@
    "branch": "cm-10.1"
  }, {
    "repository": "android_vendor_samsung",
-   "target_path": "vendor/samsung/tass",
+   "target_path": "vendor/samsung",
    "branch": "cm-10.1"
  }, {
    "repository": "android_vendor_qcom_msm7x27",
