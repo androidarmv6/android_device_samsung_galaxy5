@@ -14,6 +14,7 @@
 
 ## Inherit vendor proprietary files
 $(call inherit-product, vendor/samsung/tass/vendor_blobs.mk)
+$(call inherit-product, vendor/google/gapps_armv6_tiny.mk)
 
 include device/samsung/msm7x27-common/common.mk
 

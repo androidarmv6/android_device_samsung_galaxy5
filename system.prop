@@ -42,7 +42,7 @@ media.stagefright.enable-record=true
 
 # Wifi interface
 wifi.interface=wlan0
-wifi.supplicant_scan_interval=60
+wifi.supplicant_scan_interval=180
 wifi.ap.interface=athap0
 
 # System and Misc.
@@ -54,7 +54,7 @@ ro.ril.def.agps.mode=2
 ro.ril.def.agps.feature=1
 
 # USB
-persist.sys.usb.config=adb,mass_storage
+persist.sys.usb.config=adb,mass_storage,adb
 persist.service.adb.enable=1
 ro.vold.umsdirtyratio=20
 
