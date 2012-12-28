@@ -22,9 +22,7 @@
 # Inherit device specific files
 $(call inherit-product, device/samsung/tass/device_tass.mk)
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_no_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_small.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/tiny.mk)
 
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := full_tass

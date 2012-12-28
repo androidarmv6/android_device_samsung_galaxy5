@@ -12,14 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-## Inherit vendor proprietary files
+## Inherit products
+$(call inherit-product, device/samsung/msm7x27-common/common.mk)
 $(call inherit-product, vendor/samsung/tass/vendor_blobs.mk)
 $(call inherit-product, vendor/google/gapps_armv6_tiny.mk)
 
-include device/samsung/msm7x27-common/common.mk
+## HDPI assets
+PRODUCT_AAPT_CONFIG := normal mdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-## Device specific overlay
-DEVICE_PACKAGE_OVERLAYS := device/samsung/tass/overlay
+## Inherit overlays
+## $(call inherit-product, device/mdpi-common/mdpi.mk)
+DEVICE_PACKAGE_OVERLAYS += device/samsung/tass/overlay
 
 ## Wifi
 PRODUCT_PACKAGES += \
@@ -34,5 +38,3 @@ PRODUCT_COPY_FILES += \
     device/samsung/tass/ramdisk/ueventd.gt-s5570board.rc:root/ueventd.gt-s5570board.rc \
     device/samsung/tass/ramdisk/TASS.rle:root/TASS.rle
 
-## LDPI assets
-PRODUCT_AAPT_PREF_CONFIG := hdpi

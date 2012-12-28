@@ -3,22 +3,10 @@
 #
 
 # Graphics
-ro.opengles.version=131072
 ro.sf.lcd_density=120
 video.accelerate.hw=1
 debug.sf.no_hw_vsync=1
 debug.composition.type=gpu
-debug.hwui.render_dirty_regions=false
-persist.sys.use_dithering=0
-
-# Qualcomm
-debug.qctwa.statusbar=1
-debug.qctwa.preservebuf=1
-com.qc.hardware=true
-debug.enabletr=false
-
-# Camcorder
-debug.camcorder.disablemeta=1
 
 # RIL, telephony
 rild.libpath=/system/lib/libsec-ril.so
@@ -32,13 +20,6 @@ mobiledata.interfaces=pdp0,gprs,ppp0
 ro.telephony.call_ring.delay=0
 ro.ril.disable.power.collapse=0
 DEVICE_PROVISIONED=1
-
-# Media
-media.stagefright.enable-player=true
-media.stagefright.enable-meta=true
-media.stagefright.enable-scan=true
-media.stagefright.enable-http=true
-media.stagefright.enable-record=true
 
 # Wifi interface
 wifi.interface=wlan0

@@ -22,12 +22,6 @@ include device/samsung/msm7x27-common/BoardConfigCommon.mk
 ## Kernel, bootloader
 TARGET_BOOTLOADER_BOARD_NAME := tass
 TARGET_KERNEL_CONFIG := cyanogenmod_tass_defconfig
-
-## Fonts and Bluetooth
-SMALLER_FONT_FOOTPRINT := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/tass/bluetooth
-
-## Assert
 TARGET_OTA_ASSERT_DEVICE := tass,GT-S5570
 
 ## Recovery
@@ -37,3 +31,8 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tass/recovery/recovery_
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/tass/recovery/graphics.c
 TARGET_RECOVERY_INITRC := device/samsung/tass/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/samsung/tass/recovery/recovery.fstab
+
+## Fonts and Bluetooth
+SMALLER_FONT_FOOTPRINT := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/tass/bluetooth
+
