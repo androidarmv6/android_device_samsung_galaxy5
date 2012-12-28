@@ -3,7 +3,7 @@
 #
 
 # Graphics
-ro.sf.lcd_density=120
+ro.sf.lcd_density=160
 video.accelerate.hw=1
 debug.sf.no_hw_vsync=1
 debug.composition.type=gpu
@@ -35,7 +35,7 @@ ro.ril.def.agps.mode=2
 ro.ril.def.agps.feature=1
 
 # USB
-persist.sys.usb.config=adb,mass_storage,adb
+persist.sys.usb.config=mass_storage,adb
 persist.service.adb.enable=1
 ro.vold.umsdirtyratio=20
 

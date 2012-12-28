@@ -17,12 +17,12 @@ $(call inherit-product, device/samsung/msm7x27-common/common.mk)
 $(call inherit-product, vendor/samsung/tass/vendor_blobs.mk)
 $(call inherit-product, vendor/google/gapps_armv6_tiny.mk)
 
-## LDPI assets
+## MDPI assets
 PRODUCT_AAPT_CONFIG := normal mdpi ldpi
 PRODUCT_AAPT_PREF_CONFIG := ldpi
 
 ## Inherit overlays
-## $(call inherit-product, device/mdpi-common/mdpi.mk)
+##$(call inherit-product, device/ldpi-common/ldpi.mk)
 DEVICE_PACKAGE_OVERLAYS += device/samsung/tass/overlay
 
 ## Wifi
@@ -31,10 +31,13 @@ PRODUCT_PACKAGES += \
     wlan_tool \
     wmiconfig
 
+PRODUCT_PACKAGES += \
+    Torch
+
 ## Ramdisk
 PRODUCT_COPY_FILES += \
     device/samsung/tass/ramdisk/init.gt-s5570board.rc:root/init.gt-s5570board.rc \
-    device/samsung/tass/ramdisk/init.local.rc:root/init.local.rc \
+    device/samsung/tass/ramdisk/init.gt-s5570board.usb.rc:root/init.gt-s5570board.usb.rc \
     device/samsung/tass/ramdisk/ueventd.gt-s5570board.rc:root/ueventd.gt-s5570board.rc \
     device/samsung/tass/ramdisk/TASS.rle:root/TASS.rle
 

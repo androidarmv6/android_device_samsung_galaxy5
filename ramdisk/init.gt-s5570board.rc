@@ -1,10 +1,12 @@
+import init.gt-s5570board.usb.rc
+
 on init
     insmod /lib/modules/fsr.ko
     insmod /lib/modules/fsr_stl.ko
     insmod /lib/modules/sec_param.ko
 
 on early-init
-    #sdcard
+    # sdcard
     mkdir /storage 0775 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     symlink /storage/sdcard0 /mnt/sdcard
@@ -14,7 +16,7 @@ on early-init
     # sd-ext
     mkdir /sd-ext 0771 system system
     export SD_EXT_DIRECTORY /sd-ext
- 
+
 on fs
     mount ext4 /dev/block/stl12 /system wait rw
     mount ext4 /dev/block/stl12 /system wait ro remount
@@ -33,18 +35,26 @@ on fs
     write /sys/devices/virtual/block/stl14/queue/read_ahead_kb 4
 
 on boot
-# Fix trace
+
+# Systrace
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 # Increase read throughput from sd card
-#    write /sys/block/mmcblk0/bdi/read_ahead_kb 4096
+    #write /sys/block/mmcblk0/bdi/read_ahead_kb 4096
 
 # cpufreq configurations
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold 95
     write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/down_differential 3
     write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate 50000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 122880
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
+    chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
+# Permissions for CyanogenMod IO Scheduler settings
+    chown system system /sys/block/mmcblk0/queue/scheduler
+    chmod 0664 /sys/block/mmcblk0/queue/scheduler
 
 # Setup bluetooth
     setprop ro.bt.bdaddr_path "/data/.nvmac_bt.info"
@@ -58,24 +68,6 @@ on boot
     chmod 0660 /proc/bluetooth/sleep/proto
     chown bluetooth net_bt_stack /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-
-# Create the directories used by the Wireless subsystem
-    mkdir /data/misc 01771 system misc
-    mkdir /data/misc/wifi 0770 system wifi
-    mkdir /data/misc/wifi/sockets
-    chown system wifi /data/misc/wifi/sockets
-    chmod 770 /data/misc/wifi/sockets
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
-    mkdir /data/system 0775 system system
-
-    mkdir /data/local
-    chmod 0777 /data/local
-    chown radio shell /data/local
-    mkdir /data/local/tmp
-    chmod 0777 /data/local/tmp
-    chown radio shell /data/local/tmp
-    mkdir /data/misc/radio 0770 radio radio
 
 # Sensors
     mkdir /data/misc/sensors 0777 system misc
@@ -113,18 +105,23 @@ on boot
     chown system system /sys/devices/platform/msm_sdcc.4/polling
     chown system system /sys/devices/platform/android_usb/composition
     chown system system /sys/devices/platform/android_usb/remote_wakeup
-    
-    # create data/gps for GPS daemon
-    mkdir /data/gps 771 gps system
-    chown gps system /data/gps
 
 # KSM
     chown sytem system /sys/kernel/mm/ksm/run
     chmod 666 /sys/kernel/mm/ksm/run
 
+    # create data/gps for GPS daemon
+    mkdir /data/gps 771 gps system
+    chown gps system /data/gps
+
 # Enable MASS storage on SDCARD
     write /sys/devices/platform/mass_storage/lun0/file /dev/block/mmcblk0p1
     write /sys/bus/platform/drivers/msm_sdcc/msm_sdcc.1/polling 1
+
+on post-fs-data
+# Create the directories used by the Wireless subsystem
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp  
 
 on property:persist.service.adb.enable=1
     start adbd
@@ -132,23 +129,12 @@ on property:persist.service.adb.enable=1
 on property:persist.service.adb.enable=0
     stop adbd
 
-on property:dev.bootcomplete=1
-    stop dhcp-service
-    start dhcp-service
-
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd_wlan0
-    
+
 service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -W -c/data/misc/wifi/wpa_supplicant.conf
     class main
-    group wifi inet
     socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-service p2p_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
-    class main
-    socket wpa_wlan0 dgram 0660 wifi wifi
     disabled
     oneshot
 
@@ -157,7 +143,7 @@ service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     class main
     disabled
     oneshot
@@ -173,22 +159,23 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     oneshot
 
 service qmuxd /system/bin/qmuxd
+    class main
     user radio
     group system radio inet
+    disabled
 
 service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --baudrate 3000000 --patchram /system/etc/firmware/BCM2049C0_003.001.031.0088.0094.hcd /dev/ttyHS0
+    class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
     oneshot
 
 service bdaddr_read /system/bin/bdaddr_read
+    class main
     user root
     disabled
     oneshot
-
-on property:init.svc.bootanim=running
-    start bdaddr_read
 
 service gps-daemon /system/bin/gpsd
     user system
@@ -200,8 +187,9 @@ service memsicd /system/bin/memsicd
     group root
     oneshot	
 
-# From init.gt-i5500.rc by subpsyke
+# From init.gt-i5500.rc by psyke83
 service get_macaddrs /system/bin/get_macaddrs
+    class main
     user root
     oneshot
     disabled
@@ -210,7 +198,9 @@ on property:init.svc.ril-daemon=running
     start get_macaddrs
 
 service setup_fs /system/bin/setup_fs /dev/block/stl13 /dev/block/stl14
+    class main
     user root
     group root
     oneshot
     disabled
+

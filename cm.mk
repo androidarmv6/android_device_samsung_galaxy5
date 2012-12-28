@@ -8,9 +8,9 @@ $(call inherit-product, vendor/cm/config/tiny.mk)
 $(call inherit-product, device/samsung/tass/full_tass.mk)
 
 # Release name and versioning
-PRODUCT_RELEASE_NAME := GalaxyMini
+PRODUCT_RELEASE_NAME := GalaxyTass
 PRODUCT_VERSION_DEVICE_SPECIFIC := -GT-S5570
--include vendor/cm/config/common_versions.mk
+#-include vendor/cm/config/common_versions.mk
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := tass
