@@ -22,7 +22,7 @@ PRODUCT_AAPT_CONFIG := normal mdpi ldpi
 PRODUCT_AAPT_PREF_CONFIG := ldpi
 
 ## Inherit overlays
-##$(call inherit-product, device/ldpi-common/ldpi.mk)
+$(call inherit-product, device/ldpi-common/ldpi.mk)
 DEVICE_PACKAGE_OVERLAYS += device/samsung/tass/overlay
 
 ## Wifi

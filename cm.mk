@@ -17,4 +17,4 @@ PRODUCT_DEVICE := tass
 PRODUCT_NAME := cm_tass
 
 ## Bootanimation
-TARGET_BOOTANIMATION_NAME := vertical-320x480
+TARGET_BOOTANIMATION_NAME := vertical-240x320
