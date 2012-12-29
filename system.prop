@@ -3,7 +3,7 @@
 #
 
 # Graphics
-ro.sf.lcd_density=160
+ro.sf.lcd_density=120
 video.accelerate.hw=1
 debug.sf.no_hw_vsync=1
 debug.composition.type=gpu
