@@ -31,9 +31,6 @@ PRODUCT_PACKAGES += \
     wlan_tool \
     wmiconfig
 
-PRODUCT_PACKAGES += \
-    Torch
-
 ## Ramdisk
 PRODUCT_COPY_FILES += \
     device/samsung/tass/ramdisk/init.gt-s5570board.rc:root/init.gt-s5570board.rc \
