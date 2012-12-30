@@ -3,6 +3,10 @@
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
          be empty.  An example would be "usb.*" -->
+    <!-- Boolean indicating whether the start command should be called on the wireless interface
+         when starting the SoftAp -->
+    <bool name="config_wifiApStartInterface">true</bool>
+
     <string-array translatable="false" name="config_tether_usb_regexs">
          <item>"rndis\\d"</item>
          <item>"usb\\d"</item>
@@ -28,6 +32,9 @@
         <item>"mobile_dun,4,0,3,60000,true"</item>
         <item>"mobile_hipri,5,0,3,60000,true"</item>
     </string-array>
+
     <integer name="config_deviceHardwareKeys">7</integer>
     <bool name="config_samsung_stk">true</bool>
+
+
 </resources>
