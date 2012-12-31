@@ -33,8 +33,8 @@ PRODUCT_PACKAGES += \
 
 ## Ramdisk
 PRODUCT_COPY_FILES += \
-    device/samsung/tass/ramdisk/init.gt-s5570board.rc:root/init.gt-s5570board.rc \
-    device/samsung/tass/ramdisk/init.gt-s5570board.usb.rc:root/init.gt-s5570board.usb.rc \
-    device/samsung/tass/ramdisk/ueventd.gt-s5570board.rc:root/ueventd.gt-s5570board.rc \
+    device/samsung/msm7x27-common/ramdisk/init.msm7x27.rc:root/init.gt-s5570board.rc \
+    device/samsung/msm7x27-common/ramdisk/init.msm7x27.usb.rc:root/init.msm7x27.usb.rc \
+    device/samsung/msm7x27-common/ramdisk/ueventd.msm7x27.rc:root/ueventd.gt-s5570board.rc \
     device/samsung/tass/ramdisk/TASS.rle:root/TASS.rle
 
