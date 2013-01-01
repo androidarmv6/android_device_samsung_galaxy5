@@ -30,6 +30,10 @@ PRODUCT_PACKAGES += \
     camera.galaxy5 \
     libcamera
 
+## GPS
+PRODUCT_PACKAGES += \
+    gps.galaxy5
+
 ## Keypad
 PRODUCT_COPY_FILES += \
     device/samsung/galaxy5/prebuilt/usr/idc/europa_keypad0.idc:system/usr/idc/europa_keypad0.idc
