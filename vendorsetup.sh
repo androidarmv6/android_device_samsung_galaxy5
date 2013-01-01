@@ -21,4 +21,4 @@
 # function: add_lunch_combo generic-eng
 
 
-add_lunch_combo cm_tass-userdebug
+add_lunch_combo cm_galaxy5-userdebug

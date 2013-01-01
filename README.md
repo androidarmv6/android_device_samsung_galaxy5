@@ -1,7 +1,7 @@
-android_device_samsung_tass
+android_device_samsung_galaxy5
 ==========================
 
-Device configuration for Samsung tass GT-S5570
+Device configuration for Samsung galaxy5 GT-I5500
 
 Getting Started
 ---------------
@@ -20,11 +20,11 @@ Then to sync up:
 Build your device:
 
     source build/envsetup.sh
-    brunch tass
+    brunch galaxy5
 
 Flash ZIP:
 
-    out/target/product/tass/cm-VERSION-DEVICENAME.zip
+    out/target/product/galaxy5/cm-VERSION-DEVICENAME.zip
 
 
 Please see the [CyanogenMod Wiki](http://wiki.cyanogenmod.org/) for building instructions.

@@ -14,7 +14,7 @@
 
 ## Inherit products
 $(call inherit-product, device/samsung/msm7x27-common/common.mk)
-$(call inherit-product, vendor/samsung/tass/vendor_blobs.mk)
+$(call inherit-product, vendor/samsung/galaxy5/vendor_blobs.mk)
 $(call inherit-product, vendor/google/gapps_armv6_tiny.mk)
 
 ## MDPI assets
@@ -23,7 +23,7 @@ PRODUCT_AAPT_PREF_CONFIG := ldpi
 
 ## Inherit overlays
 $(call inherit-product, device/ldpi-common/ldpi.mk)
-DEVICE_PACKAGE_OVERLAYS += device/samsung/tass/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxy5/overlay
 
 ## Wifi
 PRODUCT_PACKAGES += \
@@ -33,8 +33,7 @@ PRODUCT_PACKAGES += \
 
 ## Ramdisk
 PRODUCT_COPY_FILES += \
-    device/samsung/msm7x27-common/ramdisk/init.msm7x27.rc:root/init.gt-s5570board.rc \
+    device/samsung/msm7x27-common/ramdisk/init.msm7x27.rc:root/init.gt-i5500board.rc \
     device/samsung/msm7x27-common/ramdisk/init.msm7x27.usb.rc:root/init.msm7x27.usb.rc \
-    device/samsung/msm7x27-common/ramdisk/ueventd.msm7x27.rc:root/ueventd.gt-s5570board.rc \
-    device/samsung/tass/ramdisk/TASS.rle:root/TASS.rle
+    device/samsung/msm7x27-common/ramdisk/ueventd.msm7x27.rc:root/ueventd.gt-i5500board.rc
 

@@ -20,14 +20,14 @@
 #
 
 # Inherit device specific files
-$(call inherit-product, device/samsung/tass/device_tass.mk)
+$(call inherit-product, device/samsung/galaxy5/device_galaxy5.mk)
 # Inherit from those products. Most specific first.
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/tiny.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_tass
-PRODUCT_DEVICE := tass
+PRODUCT_NAME := full_galaxy5
+PRODUCT_DEVICE := galaxy5
 PRODUCT_BRAND := Samsung
-PRODUCT_MODEL := GT-S5570
+PRODUCT_MODEL := GT-I5500
 PRODUCT_MANUFACTURER := Samsung
