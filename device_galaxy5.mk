@@ -25,6 +25,11 @@ PRODUCT_AAPT_PREF_CONFIG := ldpi
 $(call inherit-product, device/ldpi-common/ldpi.mk)
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxy5/overlay
 
+## Camera
+PRODUCT_PACKAGES += \
+    camera.galaxy5 \
+    libcamera
+
 ## Keypad
 PRODUCT_COPY_FILES += \
     device/samsung/galaxy5/prebuilt/usr/idc/europa_keypad0.idc:system/usr/idc/europa_keypad0.idc
