@@ -33,7 +33,7 @@ PRODUCT_PACKAGES += \
 
 ## Ramdisk
 PRODUCT_COPY_FILES += \
-    device/samsung/msm7x27-common/ramdisk/init.msm7x27.rc:root/init.gt-i5500board.rc \
+    device/samsung/galaxy5/ramdisk/init.gt-i5500board.rc:root/init.gt-i5500board.rc \
     device/samsung/msm7x27-common/ramdisk/init.msm7x27.usb.rc:root/init.msm7x27.usb.rc \
     device/samsung/msm7x27-common/ramdisk/ueventd.msm7x27.rc:root/ueventd.gt-i5500board.rc
 
