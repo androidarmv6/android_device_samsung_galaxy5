@@ -25,6 +25,11 @@ PRODUCT_AAPT_PREF_CONFIG := ldpi
 $(call inherit-product, device/ldpi-common/ldpi.mk)
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxy5/overlay
 
+## Sensors
+PRODUCT_PACKAGES += \
+    g5sensord \
+    sensors.galaxy5
+
 ## Wifi
 PRODUCT_PACKAGES += \
     abtfilt \

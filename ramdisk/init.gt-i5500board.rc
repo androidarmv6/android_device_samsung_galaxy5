@@ -178,6 +178,12 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --bau
     disabled
     oneshot
 
+service g5sensord /system/bin/g5sensord
+    class main
+    user system
+    group system
+    oneshot
+
 # From init.gt-i5500.rc by psyke83
 service get_macaddrs /system/bin/get_macaddrs
     class main
