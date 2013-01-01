@@ -38,12 +38,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/samsung/galaxy5/prebuilt/usr/idc/msm_touchscreen.idc:system/usr/idc/msm_touchscreen.idc
 
-## Wifi
-PRODUCT_PACKAGES += \
-    abtfilt \
-    wlan_tool \
-    wmiconfig
-
 ## Ramdisk
 PRODUCT_COPY_FILES += \
     device/samsung/galaxy5/ramdisk/init.gt-i5500board.rc:root/init.gt-i5500board.rc \
