@@ -28,7 +28,7 @@
     <int name="maxMessageCountPerThread">5000</int>
 
     <!-- UAProf URL -->
-    <string name="uaProfUrl">http://wap.samsungmobile.com/uaprof/GT-S5660.xml</string>
+    <string name="uaProfUrl">http://wap.samsungmobile.com/uaprof/GT-i5500.xml</string>
 
     <!-- Maximum number of recipients allowed per message. Use a value of -1
          to indicate no limit. -->
@@ -57,5 +57,5 @@
     <int name="maxMessageTextSize">-1</int>
 
     <!-- User-Agent parameter used in MMS http request -->
-    <string name="userAgent">Samsung GT-S5660 (Galaxy Gio)</string>
+    <string name="userAgent">Samsung GT-I5500 (Galaxy 5)</string>
 </mms_config>
