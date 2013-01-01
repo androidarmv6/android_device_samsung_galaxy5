@@ -25,10 +25,18 @@ PRODUCT_AAPT_PREF_CONFIG := ldpi
 $(call inherit-product, device/ldpi-common/ldpi.mk)
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxy5/overlay
 
+## Keypad
+PRODUCT_COPY_FILES += \
+    device/samsung/galaxy5/prebuilt/usr/idc/europa_keypad0.idc:system/usr/idc/europa_keypad0.idc
+
 ## Sensors
 PRODUCT_PACKAGES += \
     g5sensord \
     sensors.galaxy5
+
+## Touchscreen (GT-I5508 resistive)
+PRODUCT_COPY_FILES += \
+    device/samsung/galaxy5/prebuilt/usr/idc/msm_touchscreen.idc:system/usr/idc/msm_touchscreen.idc
 
 ## Wifi
 PRODUCT_PACKAGES += \
