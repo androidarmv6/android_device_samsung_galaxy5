@@ -171,21 +171,11 @@ service qmuxd /system/bin/qmuxd
     group system radio inet
     disabled
 
-service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --baudrate 3000000 --patchram /system/etc/firmware/BCM2049C0_003.001.031.0088.0094.hcd /dev/ttyHS0
+service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --baudrate 3000000 --patchram /system/etc/firmware/BCM2049B0_BCM20780B0_002.001.022.0170.0174.hcd /dev/ttyHS0
     class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
-    oneshot
-
-service gps-daemon /system/bin/gpsd
-    user system
-    group system inet
-
-service memsicd /system/bin/memsicd
-    class main
-    user root
-    group root
     oneshot
 
 # From init.gt-i5500.rc by psyke83
