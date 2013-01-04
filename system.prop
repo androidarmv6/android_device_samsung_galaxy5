@@ -50,6 +50,9 @@ dalvik.vm.execution-mode=int:jit
 dalvik.vm.dexopt-data-only=1
 dalvik.vm.checkjni=0
 
+# Memory
+persist.sys.purgeable_assets=1
+
 # Other
 dev.sfbootcomplete=0
 ro.com.google.locationfeatures=1
