@@ -52,4 +52,12 @@ LOCAL_SHARED_LIBRARIES := liblog libdl libutils libcamera_client libbinder libcu
 LOCAL_C_INCLUDES       := frameworks/base/services/ frameworks/base/include
 LOCAL_C_INCLUDES       += hardware/libhardware/include/ hardware
 
+ifneq ($(TARGET_QCOM_DISPLAY_VARIANT),)
+    DISPLAY := display-$(TARGET_QCOM_DISPLAY_VARIANT)
+else
+    DISPLAY := display
+endif
+
+LOCAL_C_INCLUDES       += hardware/qcom/$(DISPLAY)/libgralloc
+
 include $(BUILD_SHARED_LIBRARY)

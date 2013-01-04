@@ -30,11 +30,9 @@
 #define NO_ERROR 0
 #define GRALLOC_USAGE_PMEM_PRIVATE_ADSP GRALLOC_USAGE_PRIVATE_0
 #define MSM_COPY_HW 1
-#undef MSM_COPY_HW
 #define HWA 1
-#undef HWA
 #ifdef HWA
-#include "qcom/display/libgralloc/gralloc_priv.h"
+#include <gralloc_priv.h>
 #else
 #include "libhardware/modules/gralloc/gralloc_priv.h"
 #endif
@@ -222,11 +220,6 @@ CameraHAL_HandlePreviewData(const android::sp<android::IMemory>& dataPtr,
       ssize_t  offset;
       size_t   size;
       int32_t  previewFormat = MDP_Y_CBCR_H2V2;
-#ifdef HWA
-      int32_t  destFormat    = MDP_RGBX_8888;
-#else
-      int32_t  destFormat    = MDP_RGBA_8888;
-#endif
 
       android::status_t retVal;
       android::sp<android::IMemoryHeap> mHeap = dataPtr->getMemory(&offset,
@@ -237,17 +230,14 @@ CameraHAL_HandlePreviewData(const android::sp<android::IMemory>& dataPtr,
            (unsigned)offset, size, mHeap != NULL ? mHeap->base() : 0);
 
       mWindow->set_usage(mWindow,
-#ifndef HWA
+// seems to be causing issues with HWA; disable for now
+//#ifndef HWA
                          GRALLOC_USAGE_PMEM_PRIVATE_ADSP |
-#endif
+//#endif
                          GRALLOC_USAGE_SW_READ_OFTEN);
       retVal = mWindow->set_buffers_geometry(mWindow,
                                              previewWidth, previewHeight,
-#ifdef HWA
-                                             HAL_PIXEL_FORMAT_RGBX_8888
-#else
-                                             HAL_PIXEL_FORMAT_RGBA_8888
-#endif
+                                             HAL_PIXEL_FORMAT_YCrCb_420_SP
                                              );
       if (retVal == NO_ERROR) {
          int32_t          stride;
@@ -258,33 +248,13 @@ CameraHAL_HandlePreviewData(const android::sp<android::IMemory>& dataPtr,
          if (retVal == NO_ERROR) {
             retVal = mWindow->lock_buffer(mWindow, bufHandle);
             if (retVal == NO_ERROR) {
-               private_handle_t const *privHandle =
-                  reinterpret_cast<private_handle_t const *>(*bufHandle);
-               if (!CameraHAL_CopyBuffers_Hw(mHeap->getHeapID(), privHandle->fd,
+               private_handle_t const *privHandle = 
+                   reinterpret_cast<private_handle_t const *>(*bufHandle);
+               CameraHAL_CopyBuffers_Hw(mHeap->getHeapID(), privHandle->fd,
                                              offset, privHandle->offset,
-                                             previewFormat, destFormat,
+                                             previewFormat, previewFormat,
                                              0, 0, previewWidth,
-                                             previewHeight)) {
-                  void *bits;
-                  android::Rect bounds;
-                  android::GraphicBufferMapper &mapper =
-                     android::GraphicBufferMapper::get();
-
-                  bounds.left   = 0;
-                  bounds.top    = 0;
-                  bounds.right  = previewWidth;
-                  bounds.bottom = previewHeight;
-
-                  mapper.lock(*bufHandle, GRALLOC_USAGE_SW_READ_OFTEN, bounds,
-                              &bits);
-                  ALOGV("CameraHAL_HPD: w:%d h:%d bits:%p",
-                       previewWidth, previewHeight, bits);
-                  CameraHal_Decode_Sw((unsigned int *)bits, (char *)mHeap->base() + offset,
-                                      previewWidth, previewHeight);
-
-                  // unlock buffer before sending to display
-                  mapper.unlock(*bufHandle);
-               }
+                                             previewHeight);
 
                mWindow->enqueue_buffer(mWindow, bufHandle);
                ALOGV("CameraHAL_HandlePreviewData: enqueued buffer\n");
