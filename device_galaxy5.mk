@@ -30,6 +30,17 @@ PRODUCT_PACKAGES += \
     camera.galaxy5 \
     libcamera
 
+## Galaxy5Parts
+PRODUCT_PACKAGES += \
+    Galaxy5Parts
+
+## Galaxy5Parts support files
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.touchscreen.xml:system/galaxy5parts/etc/permissions/android.hardware.touchscreen.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/galaxy5parts/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
+    device/samsung/galaxy5/prebuilt/bin/handle_galaxy5parts:system/bin/handle_galaxy5parts \
+    device/samsung/galaxy5/ramdisk/init.gt-i5500board.parts.rc:root/init.gt-i5500board.parts.rc
+
 ## GPS
 PRODUCT_PACKAGES += \
     gps.galaxy5

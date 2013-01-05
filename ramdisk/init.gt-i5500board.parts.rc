@@ -1,0 +1,40 @@
+# Galaxy5Parts
+
+on boot
+
+# galaxy5parts - helper service
+service galaxy5parts /system/bin/sh /system/bin/handle_galaxy5parts
+    class main
+    user root
+    group root
+    oneshot
+
+# compcache - check dynamic lmk
+on property:persist.service.zram=*
+    setprop persist.sys.galaxy5parts lowmemorykiller
+    start galaxy5parts
+
+# adjust dual-touch permissions
+on property:persist.sys.fakedt=*
+    setprop persist.sys.galaxy5parts fakedt
+    start galaxy5parts
+
+# dynamic lowmemorykiller
+on property:persist.sys.dynlmk=*
+    setprop persist.sys.galaxy5parts lowmemorykiller
+    start galaxy5parts
+
+# sd read-ahead
+on property:persist.sys.read_ahead_kb=*
+    setprop persist.sys.galaxy5parts readahead
+    start galaxy5parts
+
+# swap
+on property:persist.sys.swap=*
+    setprop persist.sys.galaxy5parts swap
+    start galaxy5parts
+
+# set dynamic lmk (if needed) when boot completes
+on property:sys.boot_completed=1
+    setprop persist.sys.galaxy5parts lowmemorykiller
+    start galaxy5parts

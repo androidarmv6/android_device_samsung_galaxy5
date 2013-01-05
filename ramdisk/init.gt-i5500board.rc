@@ -1,3 +1,4 @@
+import init.gt-i5500board.parts.rc
 import init.msm7x27.usb.rc
 
 on init
@@ -38,9 +39,6 @@ on boot
 
 # Systrace
     mount debugfs /sys/kernel/debug /sys/kernel/debug
-
-# Increase read throughput from sd card
-    #write /sys/block/mmcblk0/bdi/read_ahead_kb 4096
 
 # cpufreq configurations
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
@@ -184,7 +182,6 @@ service g5sensord /system/bin/g5sensord
     group system
     oneshot
 
-# From init.gt-i5500.rc by psyke83
 service get_macaddrs /system/bin/get_macaddrs
     class main
     user root
