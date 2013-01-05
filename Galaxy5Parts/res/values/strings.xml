@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GT-I5500 device settings</string>
+    <string name="attn_fm">Attenuation - FM (headset/speaker)</string>
+    <string name="attn_headset">Attenuation - headset</string>
+    <string name="attn_speaker">Attenuation - speaker</string>
+    <string name="audio_cat">Audio attenuation</string>
+    <string name="back_process_limit">Background process limit</string>
+    <string name="bug_report_success">Bug report generated to</string>
+    <string name="cache_size">SD card read-ahead buffer</string>
+    <string name="cancel">Cancel</string>
+    <string name="current_setting">Current setting:</string>
+    <string name="disabled">disabled</string>
+    <string name="extamp">Samsung extamp filter</string>
+    <string name="extamp_sum_off">External amplifier filter is off</string>
+    <string name="extamp_sum_on">External amplifier filter is on</string>
+    <string name="fake_dt">Fake dual-touch</string>
+    <string name="fake_dt_sum">Use circular gestures to activate dual-touch for pinch-to-zoom (requires reboot)</string>
+    <string name="gen_bug_report">Generate bug report</string>
+    <string name="gen_bug_report_summary">Dumps system logs to SD card for bug reporting purposes</string>
+    <string name="lmk">Dynamic LMK</string>
+    <string name="lmk_sum">Dynamically adjusts lowmemorykiller kernel driver based on swap or zRam activity</string>
+    <string name="log_cat">Report bug</string>
+    <string name="memory_man">Memory management</string>
+    <string name="processing">Processing…</string>
+    <string name="rootaccess_required">Cannot capture log. Please enable root access for Apps and ADB in Settings -> Developer options</string>
+    <string name="screen_cat">Screen settings</string>
+    <string name="sd_not_mounted">SD card is not mounted</string>
+    <string name="swap_cce">Cannot enable swap while zRam is enabled. Please disable zRam and try again</string>
+    <string name="swap_sum">Use SD card swap partition as virtual memory, allowing more applications to remain open</string>
+</resources>

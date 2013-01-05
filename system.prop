@@ -2,6 +2,21 @@
 # system.prop for GT-I5500
 #
 
+# Audio
+persist.sys.attn-speaker=0
+persist.sys.attn-headset=0
+persist.sys.attn-fm=0
+persist.sys.extamp-fmheadset=20
+persist.sys.extamp-nomicheadset=26
+persist.sys.extamp-otherheadset=18
+persist.sys.extamp-speaker=29
+
+# Galaxy5Parts
+persist.sys.fakedt=0
+persist.sys.dynlmk=1
+persist.sys.dynlmk-adj=0,1,2,4,9,15
+persist.sys.dynlmk-minfree=1536,2048,4096,15120,15360,23040
+
 # Graphics
 ro.sf.lcd_density=120
 video.accelerate.hw=1
