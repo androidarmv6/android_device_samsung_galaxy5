@@ -5,6 +5,11 @@
 command=$(getprop persist.sys.galaxy5parts)
 setprop persist.sys.galaxy5parts ""
 
+if [ "$1" != "" ]; then
+    # command from shell (debug)
+    command=$1
+fi
+
 remount() {
 mount -o remount,$1 /system
 }
@@ -33,10 +38,12 @@ dtstatus=$(getprop persist.sys.fakedt)
 stpermissions="android.hardware.touchscreen.xml"
 mtpermissions="android.hardware.touchscreen.multitouch.distinct.xml"
 
+echo "Fake dual-touch status:" $dtstatus
 echo $dtstatus > /sys/devices/virtual/touch/synaptics/fakedt
 
 if [ "$dtstatus" = "1" ] && [ -f /system/etc/permissions/$stpermissions ]; then
-    echo "Fake dual-touch is enabled, but ST permissions file is present!"
+    echo "Warning: fake dual-touch is enabled, but ST permissions file is present!"
+    echo "         Permissions will take effect after reboot."
     remount rw
     rm /system/etc/permissions/$stpermissions
     cp /system/galaxy5parts/etc/permissions/$mtpermissions /system/etc/permissions/
@@ -44,7 +51,8 @@ if [ "$dtstatus" = "1" ] && [ -f /system/etc/permissions/$stpermissions ]; then
 fi
 
 if [ "$dtstatus" != "1" ] && [ -f /system/etc/permissions/$mtpermissions ]; then
-    echo "Fake dual-touch is disabled, but MT permissions file is present!"
+    echo "Warning: fake dual-touch is disabled, but MT permissions file is present!"
+    echo "         Permissions will take effect after reboot."
     remount rw
     rm /system/etc/permissions/$mtpermissions
     cp /system/galaxy5parts/etc/permissions/$stpermissions /system/etc/permissions/
@@ -60,22 +68,17 @@ newspeed=${speeds[$sdreadahead]}
 
 # If Android is not fully booted, don't set the default
 # read-ahead size (or it could interfere with user scripts)
-if [ "$bootstatus" != "1" ] && [ "$newspeed" = "128" ]; then
-    echo "Warning: not setting SD card read-ahead buffer"
-    exit
+if ([ "$bootstatus" != "1" ] || [ $command = "bootcheck" ]) && [ "$newspeed" = "128" ]; then
+    echo "Warning: will not set default read-ahead buffer during boot"
+else
+    # Set SD read_ahead_kb
+    echo "Setting new SD card read-ahead buffer: $newspeed"
+    echo $newspeed > /sys/devices/virtual/bdi/179:0/read_ahead_kb
 fi
-
-# Set SD read_ahead_kb
-echo "Setting new SD card read-ahead buffer: $newspeed"
-echo $newspeed > /sys/devices/virtual/bdi/179:0/read_ahead_kb
 }
 
 lowmemorykiller () {
 bootstatus=$(getprop sys.boot_completed)
-if [ "$bootstatus" != "1" ]; then
-    echo "Not finished booting! Dynamic LMK not applied."
-    exit
-fi
 lowmemorykillerenabled=$(getprop persist.sys.dynlmk)
 lowmemorykilleradj=$(getprop persist.sys.dynlmk-adj)
 lowmemorykillerminfree=$(getprop persist.sys.dynlmk-minfree)
@@ -128,12 +131,14 @@ if [ "$isswapenabled" != "1" ] && [ "$isswapon" = "1" ]; then
 fi
 }
 
+bootcheck() {
+# ensure customizations are applied after Android boot completes
+fakedt
+swap
+readahead
+lowmemorykiller
+}
 
-if [ "$1" != "" ]; then
-    # command from shell (debug)
-    $1
-else
-    # command from init.rc
-    $command
-fi
+# run command
+$command
 

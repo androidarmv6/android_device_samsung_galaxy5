@@ -34,7 +34,7 @@ on property:persist.sys.swap=*
     setprop persist.sys.galaxy5parts swap
     start galaxy5parts
 
-# set dynamic lmk (if needed) when boot completes
+# ensure that customization are enabled upon boot
 on property:sys.boot_completed=1
-    setprop persist.sys.galaxy5parts lowmemorykiller
+    setprop persist.sys.galaxy5parts bootcheck
     start galaxy5parts
