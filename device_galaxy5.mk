@@ -41,10 +41,6 @@ PRODUCT_COPY_FILES += \
     device/samsung/galaxy5/prebuilt/bin/handle_galaxy5parts:system/bin/handle_galaxy5parts \
     device/samsung/galaxy5/ramdisk/init.gt-i5500board.parts.rc:root/init.gt-i5500board.parts.rc
 
-## GPS
-PRODUCT_PACKAGES += \
-    gps.galaxy5
-
 ## Keypad
 PRODUCT_COPY_FILES += \
     device/samsung/galaxy5/prebuilt/usr/idc/europa_keypad0.idc:system/usr/idc/europa_keypad0.idc
