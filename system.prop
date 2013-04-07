@@ -38,7 +38,7 @@ DEVICE_PROVISIONED=1
 # Wifi interface
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=180
-wifi.ap.interface=athap0
+wifi.ap.interface=wlan0
 
 # System and Misc.
 ro.tether.denied=false

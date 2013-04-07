@@ -22,7 +22,11 @@ include device/samsung/msm7x27-common/BoardConfigCommon.mk
 ## Kernel, bootloader
 BOARD_KERNEL_BASE := 0x00200000
 TARGET_BOOTLOADER_BOARD_NAME := galaxy5
-TARGET_KERNEL_CONFIG := cyanogenmod_galaxy5_defconfig
+ifdef BUILD_WITH_30X_KERNEL
+	TARGET_KERNEL_CONFIG := cyanogenmod/cyanogenmod_galaxy5_defconfig
+else
+	TARGET_KERNEL_CONFIG := cyanogenmod_galaxy5_defconfig
+endif
 TARGET_OTA_ASSERT_DEVICE := galaxy5,GT-I5500,GT-I5503,GT-I5508
 
 ## Recovery
