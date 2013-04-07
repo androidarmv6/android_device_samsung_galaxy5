@@ -2,7 +2,7 @@
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/tiny.mk)
+$(call inherit-product, vendor/cm/config/mini.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/galaxy5/full_galaxy5.mk)
