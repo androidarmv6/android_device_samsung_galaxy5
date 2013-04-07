@@ -39,9 +39,12 @@
         <item>com.google.android.location</item>
     </string-array>
 
-        <bool name="config_animateScreenLights">false</bool>
+    <bool name="config_animateScreenLights">false</bool>
 
-        <integer name="config_deviceHardwareKeys">7</integer>
-        <bool name="config_samsung_stk">true</bool>
+    <integer name="config_deviceHardwareKeys">7</integer>
+    <bool name="config_samsung_stk">true</bool>
+
+    <!-- The default iface on which to monitor data use -->
+    <string name="config_datause_iface" translatable="false">pdp0</string>
 
 </resources>
