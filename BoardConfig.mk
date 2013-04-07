@@ -19,6 +19,9 @@
 
 include device/samsung/msm7x27-common/BoardConfigCommon.mk
 
+## Lights - generic driver works better for galaxy5
+TARGET_PROVIDES_LIBLIGHT := false
+
 ## Kernel, bootloader
 BOARD_KERNEL_BASE := 0x00200000
 TARGET_BOOTLOADER_BOARD_NAME := galaxy5
