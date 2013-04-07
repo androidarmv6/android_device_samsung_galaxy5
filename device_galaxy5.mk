@@ -12,19 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-## Inherit products
-$(call inherit-product, device/samsung/msm7x27-common/common.mk)
-$(call inherit-product, vendor/samsung/galaxy5/vendor_blobs.mk)
-$(call inherit-product, vendor/google/gapps_armv6_tiny.mk)
-
-## MDPI assets
-PRODUCT_AAPT_CONFIG := normal mdpi ldpi
-PRODUCT_AAPT_PREF_CONFIG := ldpi
-
-## Inherit overlays
-$(call inherit-product, device/ldpi-common/ldpi.mk)
-DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxy5/overlay
-
 ## Camera
 PRODUCT_PACKAGES += \
     camera.galaxy5 \
@@ -60,3 +47,16 @@ PRODUCT_COPY_FILES += \
     device/samsung/msm7x27-common/ramdisk/init.msm7x27.usb.rc:root/init.msm7x27.usb.rc \
     device/samsung/msm7x27-common/ramdisk/ueventd.msm7x27.rc:root/ueventd.gt-i5500board.rc
 
+# Inherit products (Most specific first)
+# galaxy5 blobs > samsung common(device/vendor) > other blobs
+$(call inherit-product, vendor/samsung/galaxy5/vendor_blobs.mk)
+$(call inherit-product, device/samsung/msm7x27-common/common.mk)
+$(call inherit-product, vendor/samsung/msm7x27-common/vendor.mk)
+
+## LDPI assets
+PRODUCT_AAPT_CONFIG := normal mdpi ldpi
+PRODUCT_AAPT_PREF_CONFIG := ldpi
+$(call inherit-product, device/ldpi-common/ldpi.mk)
+
+## Inherit overlays  (Most specific last)
+DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxy5/overlay

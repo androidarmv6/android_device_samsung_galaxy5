@@ -12,22 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
-# This file is the build configuration for a full Android
-# build for crespo hardware. This cleanly combines a set of
-# device-specific aspects (drivers) with a device-agnostic
-# product configuration (apps).
-#
+# Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit device specific files
 $(call inherit-product, device/samsung/galaxy5/device_galaxy5.mk)
-# Inherit from those products. Most specific first.
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/tiny.mk)
-
-# Discard inherited values and use our own instead.
+# Overrides
 PRODUCT_NAME := full_galaxy5
 PRODUCT_DEVICE := galaxy5
 PRODUCT_BRAND := Samsung
 PRODUCT_MODEL := GT-I5500
 PRODUCT_MANUFACTURER := Samsung
+PRODUCT_CHARACTERISTICS := phone
