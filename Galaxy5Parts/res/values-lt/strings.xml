@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Galaxy5Parts</string>
+    <string name="attenuation">Silpninimas</string>
+    <string name="attn_fm">Radijo garso silpninimas</string>
+    <string name="attn_headset">Ausinių garso silpninimas</string>
+    <string name="attn_headset_speaker">Ausinės ir garsiakalbis</string>
+    <string name="attn_speaker">Garsiakalbio silpninimas</string>
+    <string name="audio_settings_cat">Garso nuostatos</string>
+    <string name="back_process_limit">Fone veikiančių programų apribojimas</string>
+    <string name="bug_report_dialog">Riktų pranešimams įrašo sistemos žurnalą SD kortelėn. Reikia supernaudotojo teisių ir šiek tiek laiko.</string>
+    <string name="bug_report_failed">Nepavyko sukurti riktų pranešimo. Įvyko klaida</string>
+    <string name="bug_report_gen">Sukurti rikto pranešimą</string>
+    <string name="bug_report_info">Riktų pranešimams įrašo sistemos žurnalą SD kortelėn</string>
+    <string name="bug_report_root_req">Negalima gauti žurnalo. Įgalinkite „Root“ prieigą programoms ir ADB Nustatymuose -> Kūrėjo parinktyje</string>
+    <string name="bug_report_success">Riktų pranešimas įrašytas</string>
+    <string name="cache_size">SD nuskaitymo buferis</string>
+    <string name="cancel">Atsisakyti</string>
+    <string name="continew">Tęsti</string>
+    <string name="current_setting">Dabartinės nuostatos</string>
+    <string name="device_settings">GT-I5500 įrenginio nustatymai</string>
+    <string name="disabled">neįgalinta</string>
+    <string name="extamp_filter">Stiprintuvo filtras</string>
+    <string name="extamp_filter_sum">Naudoti „Samsung“ išorinio stiprintuvo garso filtrą</string>
+    <string name="fake_dt">Dvitaškis lietimas</string>
+    <string name="fake_dt_sum">Apvalainai braukite, kad įjungtumėte dvitaškį lietimą bei žirklinį priartinimą (įrenginį reikia paleisti iš naujo)</string>
+    <string name="fm_radio">Radijas</string>
+    <string name="generating_bug_report">Kuriamas riktų pranešimas&#8230;</string>
+    <string name="global">Globalu</string>
+    <string name="intrfc">Sąsaja</string>
+    <string name="lmk">Dinamiškas LMK</string>
+    <string name="lmk_sum">Dinamiškai pritaiko branduolio tvarkyklę „lowmemorykiller“ mainų skirsniui arba „zRam“ </string>
+    <string name="memory_man">Atminties tvarkymas</string>
+    <string name="report_bug">Pranešti apie riktą</string>
+    <string name="sd_not_mounted">SD kortelė neprijungta</string>
+    <string name="swap">Mainų skirsnis (SWAP)</string>
+    <string name="swap_dis">Mainų skirsnis nenaudotinas kartu su „zRam“</string>
+    <string name="swap_en">Naudokite SD kortelės SWAP skirsnį kaip virtualią atmintį, taip leidžiant vykdyti daugiau programų vienu metu</string>
+
+</resources>

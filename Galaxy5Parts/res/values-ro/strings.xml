@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Galaxy5Parts</string>
+    <string name="attenuation">Atenuare</string>
+    <string name="attn_fm">Atenuare Radio FM</string>
+    <string name="attn_headset">Atenuare căști</string>
+    <string name="attn_headset_speaker">Căști &amp; Speaker</string>
+    <string name="attn_speaker">Atenuare difuzor</string>
+    <string name="audio_settings_cat">Setări audio</string>
+    <string name="back_process_limit">Limitare procese de fundal</string>
+    <string name="bug_report_dialog">Aceasta va descărca logurile de sistem către SDCard pentru bug-reporting. Acest proces necesită permisiuni Superuser și poate dura.</string>
+    <string name="bug_report_failed">Generare eșuată. A apărut o eroare.</string>
+    <string name="bug_report_gen">Generează bug report</string>
+    <string name="bug_report_info">Descarcă logurile de sistem pe SDCard pentru bug-reporting</string>
+    <string name="bug_report_root_req">Nu am putut captura loguri. Te rog activează acesul root pentru Apps and ADB în Setări -> Developer options</string>
+    <string name="bug_report_success">Raport general la</string>
+    <string name="cache_size">SD card read-ahead buffer</string>
+    <string name="cancel">Renunță</string>
+    <string name="continew">Continuă</string>
+    <string name="current_setting">Setare curentă</string>
+    <string name="device_settings">Setările terminalului GT-I5500</string>
+    <string name="disabled">neutilizat</string>
+    <string name="extamp_filter">Filtru Extamp</string>
+    <string name="extamp_filter_sum">Folosește aplificatorul filtru audio extern Samsung</string>
+    <string name="fake_dt">Dual-touch fals</string>
+    <string name="fake_dt_sum">Folosește gesturi circulare pentru a activa Dual-touch</string>
+    <string name="fm_radio">Radio FM</string>
+    <string name="generating_bug_report">Generare raport&#8230;</string>
+    <string name="global">Global</string>
+    <string name="intrfc">Interfață</string>
+    <string name="lmk">LMK Dinamic</string>
+    <string name="lmk_sum">Ajustează în mod dinamic valorile lowmemorykiller în funcție de activitatea swap sau zRam</string>
+    <string name="memory_man">Managementul memoriei</string>
+    <string name="report_bug">Raportează bug</string>
+    <string name="sd_not_mounted">Cardul nu este încărcat</string>
+    <string name="swap">Swap</string>
+    <string name="swap_dis">Swap nu poate fi folosit cât timp zRam este activ</string>
+    <string name="swap_en">Folosește partiția swap de pe SDCard ca memorie virtuală, permițând mai multor aplicații să rămână deschise</string>
+
+</resources>

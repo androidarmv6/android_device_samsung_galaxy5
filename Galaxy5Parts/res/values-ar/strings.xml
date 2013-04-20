@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Galaxy5Parts</string>
+    <string name="attenuation">تخفيف</string>
+    <string name="attn_fm">تخفيف راديو إف إم </string>
+    <string name="attn_headset">السماعة</string>
+    <string name="attn_headset_speaker">السماعة &amp; مكبر الصوت</string>
+    <string name="attn_speaker">مكبر الصوت</string>
+    <string name="audio_settings_cat">إعدادات الصوت</string>
+    <string name="back_process_limit">اقصى عدد لالبرامج الخلفية</string>
+    <string name="bug_report_dialog">وهذا سيضع سجلات النظام إلى بطاقة SD لأغراض التقارير الشوائب. هذه العملية تتطلب أذونات المستخدم الخارق (root)، وربما يستغرق بعض الوقت.</string>
+    <string name="bug_report_failed">فشل لتوليد التقرير - حدث خطأ</string>
+    <string name="bug_report_gen">توليد تقرير الشوائب</string>
+    <string name="bug_report_info">سيضع النظام بتسجيل بطاقة SD للأغراض التقارير الشوائب</string>
+    <string name="bug_report_root_req">لا يمكن التقاط السجل. يرجى تمكين الوصول للتطبيقات وroot ADB في إعدادات -> خيارات المطور</string>
+    <string name="bug_report_success">تقرير الشوائب ولدت إلى</string>
+    <string name="cache_size">المخزن المؤقت لالقراءة بطاقة SD</string>
+    <string name="cancel">إلغاء</string>
+    <string name="continew">متابعة</string>
+    <string name="current_setting">الإعدادات الحالية</string>
+    <string name="device_settings">ضبط الهاتف</string>
+    <string name="disabled">معطل</string>
+    <string name="extamp_filter">Extamp فلتر</string>
+    <string name="extamp_filter_sum">استخدام فلتر مكبرسامسونج لالصوت الخارجي</string>
+    <string name="fake_dt">اللمس المزدوجة والوهمي</string>
+    <string name="fake_dt_sum">استخدم حركات دائرية لتنشيط اللمس الوهمي و المزدوج وقرصة إلى التكبير (يتطلب إعادة التشغيل)</string>
+    <string name="fm_radio">تخفيف راديو إف إم</string>
+    <string name="generating_bug_report">توليد تقرير الشوائب</string>
+    <string name="global">تخفيف - الرئيسي</string>
+    <string name="intrfc">واجهة</string>
+    <string name="lmk">الحيوي LMK</string>
+    <string name="lmk_sum">ضبط برنامج تشغيل حيوي يعتمد على نواة lowmemorykiller المبادلة أو نشاط zRam</string>
+    <string name="memory_man">ضبط الذاكرة</string>
+    <string name="report_bug">إرسال تقرير الشوائب</string>
+    <string name="sd_not_mounted"> SD بطاقة ليس محملة</string>
+    <string name="swap">الذاكرة مبادلة (swap)</string>
+    <string name="swap_dis">لا يمكن أن تستخدم الذاكرة مبادلة أثناء تمكين zRam</string>
+    <string name="swap_en">استخدام قسم الذاكرة مبادلة في بطاقة الذاكرة الظاهرية، مما يسمح للمزيد من التطبيقات على ان تبقى مفتوحة</string>
+
+</resources>
