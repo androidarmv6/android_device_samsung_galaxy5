@@ -1,5 +1,6 @@
 import /init.${ro.hardware}.parts.rc
 import /init.${ro.hardware}.usb.rc
+import /init.${ro.hardware}.bluez.rc
 
 on init
     insmod /lib/modules/fsr.ko
@@ -36,12 +37,6 @@ on boot
 
     # bluetooth
     setprop ro.bt.bdaddr_path "/data/.nvmac_bt.info"
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
-    chmod 0660 /sys/class/rfkill/rfkill0/state
-    chmod 0660 /proc/bluetooth/sleep/proto
-    chown bluetooth net_bt_stack /sys/devices/platform/msm_serial_hs.0/clock
-    chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
     # sensors
     mkdir /data/misc/sensors 0777 system misc
