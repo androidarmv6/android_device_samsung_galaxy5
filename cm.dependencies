@@ -23,5 +23,9 @@
    "repository": "android_vendor_qcom_msm7x27",
    "target_path": "vendor/qcom/msm7x27",
    "branch": "cm-10.1"
+ }, {
+   "repository": "android_hardware_broadcom_fmradio",
+   "target_path": "hardware/broadcom/fmradio",
+   "branch": "cm-10.1"
  }
 ]
