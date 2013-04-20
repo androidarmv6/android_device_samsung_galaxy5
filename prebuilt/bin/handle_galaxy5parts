@@ -47,6 +47,7 @@ if [ "$dtstatus" = "1" ] && [ -f /system/etc/permissions/$stpermissions ]; then
     remount rw
     rm /system/etc/permissions/$stpermissions
     cp /system/galaxy5parts/etc/permissions/$mtpermissions /system/etc/permissions/
+    chmod 644 /system/etc/permissions/$mtpermissions
     remount ro
 fi
 
@@ -56,6 +57,7 @@ if [ "$dtstatus" != "1" ] && [ -f /system/etc/permissions/$mtpermissions ]; then
     remount rw
     rm /system/etc/permissions/$mtpermissions
     cp /system/galaxy5parts/etc/permissions/$stpermissions /system/etc/permissions/
+    chmod 644 /system/etc/permissions/$stpermissions
     remount ro
 fi
 }

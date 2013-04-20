@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="attenuation">
+        <item>0 dB (معطل)</item>
+        <item>1 dB</item>
+        <item>2 dB</item>
+        <item>3 dB</item>
+        <item>4 dB</item>
+        <item>5 dB</item>
+        <item>6 dB</item>
+        <item>7 dB</item>
+        <item>8 dB</item>
+        <item>9 dB</item>
+    </string-array>
+    <string-array name="background_limit">
+        <item> القيمة الأساسية ) الحد الأقصى)</item>
+        <item>لا عمليات خلفية </item>
+        <item>لا أكثر من عملية</item>
+        <item>لا أكثر من عملياتان</item>
+        <item>لا أكثر من 3 عمليات</item>
+        <item>لا أكثر من 4 عمليات</item>
+    </string-array>
+    <string-array name="cache_size">
+        <item>128 KB (القيمة الأساسية)</item>
+        <item>256 KB</item>
+        <item>512 KB</item>
+        <item>1 MB</item>
+        <item>2 MB</item>
+        <item>4 MB</item>
+    </string-array>
+
+</resources>
+

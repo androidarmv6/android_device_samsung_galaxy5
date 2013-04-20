@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Galaxy5Parts</string>
+    <string name="attenuation">Osłabienie</string>
+    <string name="attn_fm">Osłabienie radia FM</string>
+    <string name="attn_headset">Tłumienie Headset</string>
+    <string name="attn_headset_speaker">Headset &amp; Speaker</string>
+    <string name="attn_speaker">Tłumienie Speaker</string>
+    <string name="audio_settings_cat">Ustawienia Audio</string>
+    <string name="back_process_limit">Limit procesów w tle</string>
+    <string name="bug_report_dialog">Tworzenie logów systemowych na karcie SD, w celów sprawdzenia błędów. Wymaga uprawnień Su i może to trochę potrwać.</string>
+    <string name="bug_report_failed">Nieudane generowanie raporty. Wystąpił błąd.</string>
+    <string name="bug_report_gen">Generuj raport</string>
+    <string name="bug_report_info">Tworzenie logów systemu na karcie SD.</string>
+    <string name="bug_report_root_req">Nie można stworzyć dzienniku. Daj roota i ADB dla plikacji! ( ADB : Ustawienia -> Opcje deweloperów )</string>
+    <string name="bug_report_success">Wygenerowano log w</string>
+    <string name="cache_size">Bufor z k. pamięci</string>
+    <string name="cancel">Anuluj</string>
+    <string name="continew">Kontynouj</string>
+    <string name="current_setting">Ustawienia prądu</string>
+    <string name="device_settings">Ustewienia GT-I5500</string>
+    <string name="disabled">Dezaktywuj</string>
+    <string name="extamp_filter">Extamp filter</string>
+    <string name="extamp_filter_sum">Użyj Samsung zewnętrzny wzmacniacz filtru audio</string>
+    <string name="fake_dt">Fałszywy dual-touch</string>
+    <string name="fake_dt_sum">Użyj okrągłych gestów aby aktywować fałszywe dual-touch (wymagany restart!)</string>
+    <string name="fm_radio">radio FM</string>
+    <string name="generating_bug_report">Generowanie raportu o błędzie&#8230;</string>
+    <string name="global">Globalny</string>
+    <string name="intrfc">Interfejs</string>
+    <string name="lmk">Dynamiczne LMK</string>
+    <string name="lmk_sum">Dynamiczne dostosowanie lowmemorykiller kernel urządzenia basowany na swap lub zRam .</string>
+    <string name="memory_man">Zarządzanie pamięcią</string>
+    <string name="report_bug">Zgłoś bug/i.</string>
+    <string name="sd_not_mounted">Nie znaleziono karty pamięci!</string>
+    <string name="swap">Swap</string>
+    <string name="swap_dis">Swap nie może być używany, gdy włączony jest zRam !</string>
+    <string name="swap_en">Używaj partycji swap jako pamięć wirtualną, umożliwiając otwarcjie większej ilości aplikacji.</string>
+
+</resources>

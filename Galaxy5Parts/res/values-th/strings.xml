@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Galaxy5Parts</string>
+    <string name="attenuation">ลดทอนเสียง</string>
+    <string name="attn_fm">ลดเสียงวิทยุ</string>
+    <string name="attn_headset">หูฟัง</string>
+    <string name="attn_headset_speaker">หูฟังและลำโพง</string>
+    <string name="attn_speaker">ลำโพง</string>
+    <string name="audio_settings_cat">ตั้งค่าเสียง</string>
+    <string name="back_process_limit">กำหนดการทำงานพื้นหลัง</string>
+    <string name="bug_report_dialog">ทำการบันทึก Log ลงในการ์ดเพื่อใช้สำหรับรายงานข้อผิดพลาด ซึ่งต้องใช้สิทธิ์ Superuser และใช้เวลาในการดำเนินการ</string>
+    <string name="bug_report_failed">เกิดข้อผิดพลาด การดำเนินการสร้างรายงานข้อผิดพลาดล้มเหลว</string>
+    <string name="bug_report_gen">สร้างรายงานข้อผิดพลาด</string>
+    <string name="bug_report_info">บันทึก Log ลงในการ์ดเพื่อใช้สำหรับรายงานข้อผิดพลาด</string>
+    <string name="bug_report_root_req">ไม่สามารถเก็บ Log ได้กรุณาเปิดสิทธิ์ Superuser สำหรับแอพนี้และ ABD ใน ตั้งค่า -> การตั้งค่าสำหรับนักพัฒนา</string>
+    <string name="bug_report_success">สร้างการรายงานข้อผิดพลาดเสร็จสิ้น</string>
+    <string name="cache_size">ตั้งขนาดการอ่านล่วงหน้าของการ์ด</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="continew">ดำเนินการต่อ</string>
+    <string name="current_setting">ค่าปัจจุบัน</string>
+    <string name="device_settings">ตั้งค่า GT-I5500</string>
+    <string name="disabled">ปิดการทำงาน</string>
+    <string name="extamp_filter">ตัวกรองภายนอก</string>
+    <string name="extamp_filter_sum">ใช้ค่าการลดทอนเสียงของ Samsung</string>
+    <string name="fake_dt">การสัมผัสสองจุดแบบเสมือน</string>
+    <string name="fake_dt_sum">ใช้การแตะนิ้วเป็นวงกลมเพื่อเปิดใช้งานการสัมผัสสองจุด (ต้องรีบูทระบบ)</string>
+    <string name="fm_radio">ลดทอนเสียงวิทยุ</string>
+    <string name="generating_bug_report">สร้างรายงานข้อผิดพลาด</string>
+    <string name="global">ลดทอนเสียงทั้งหมด</string>
+    <string name="intrfc">อินเตอร์เฟซ</string>
+    <string name="lmk">LMK แบบไดนามิก</string>
+    <string name="lmk_sum">อุปกรณ์จะเปลี่ยนค่า lowmemorykiller ไปตาม swap หรือ zRam ที่เปิดใช้งาน</string>
+    <string name="memory_man">การจัดการหน่วยความจำ</string>
+    <string name="report_bug">รายงานข้อผิดพลาด</string>
+    <string name="sd_not_mounted">ไม่พบการ์ดความจำ</string>
+    <string name="swap">หน่วยความจำเสมือน</string>
+    <string name="swap_dis">Swap ไม่สามารถใช้งานได้เมื่อเปิดการทำงานของ zRam</string>
+    <string name="swap_en">ใช้การ์ดสร้างหน่วยความจำเสมือนเพื่อสามารถเปิดแอพพลิเคชั่นพร้อมๆกันได้มากขึ้น</string>
+
+</resources>

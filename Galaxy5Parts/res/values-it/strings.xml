@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Galaxy5Parts</string>
+    <string name="attenuation">Attenuazione</string>
+    <string name="attn_fm">Radio FM</string>
+    <string name="attn_headset">Cuffie</string>
+    <string name="attn_headset_speaker">Cuffie &amp; speaker</string>
+    <string name="attn_speaker">Speaker</string>
+    <string name="audio_settings_cat">Impostazioni audio</string>
+    <string name="back_process_limit">Limite di processi in background</string>
+    <string name="bug_report_dialog">Questo salverà il log di sistema nella scheda SD per permettere la segnalazione dei bug. Questo processo richiede i permessi di Superuser e può impiegare un po di tempo.</string>
+    <string name="bug_report_failed">Generazione segnalazione bug Fallita. Si è verificato un errore.</string>
+    <string name="bug_report_gen">Genera un bug report</string>
+    <string name="bug_report_info">Salva i log di sistema nella scheda SD per permettere la segnalazione dei bug</string>
+    <string name="bug_report_root_req">Impossibile acquisire il log. Perfavore abilita l\'accesso rott per le applicazioni e ADB in Impostazioni -> Opzioni sviluppatori</string>
+    <string name="bug_report_success">Segnalazione Bug generata in</string>
+    <string name="cache_size">Read buffer per la scheda SD</string>
+    <string name="cancel">Annulla</string>
+    <string name="continew">Continua</string>
+    <string name="current_setting">Impostazione attuale</string>
+    <string name="device_settings">GT-I5500 Impostazioni dispositivo</string>
+    <string name="disabled">disabilitato</string>
+    <string name="extamp_filter">Filtro extamp</string>
+    <string name="extamp_filter_sum">Usa filtro Samsung di amplificazione esterna</string>
+    <string name="fake_dt">Fake dual-touch</string>
+    <string name="fake_dt_sum">Usa gesti circolari per attivare il fake dual-touch e pinch-to-zoom (riavvio richiesto)</string>
+    <string name="fm_radio">Radio FM</string>
+    <string name="generating_bug_report">Generando segnalazione bug&#8230;</string>
+    <string name="global">Attenuazione globale</string>
+    <string name="intrfc">Interfaccia</string>
+    <string name="lmk">LMK dinamico</string>
+    <string name="lmk_sum">Aggiustamento dinamico del driver kernel lowmemorykiller basato su swap e zRam</string>
+    <string name="memory_man">Gestione memoria</string>
+    <string name="report_bug">Segnala bug</string>
+    <string name="sd_not_mounted">La scheda SD non è montata</string>
+    <string name="swap">Swap</string>
+    <string name="swap_dis">La swap non può essere usata se è abilitata la zRam</string>
+    <string name="swap_en">Usa la partizione swap della scheda SD come memoria virtuale, permettendo a più applicazioni di rimanere aperte</string>
+</resources>

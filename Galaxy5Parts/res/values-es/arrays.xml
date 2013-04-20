@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="attenuation">
+        <item>0 dB (disabled)</item>
+        <item>1 dB</item>
+        <item>2 dB</item>
+        <item>3 dB</item>
+        <item>4 dB</item>
+        <item>5 dB</item>
+        <item>6 dB</item>
+        <item>7 dB</item>
+        <item>8 dB</item>
+        <item>9 dB</item>
+    </string-array>
+    <string-array name="background_limit">
+        <item>Límite estándar (default)</item>
+        <item>Sin procesos de fondo</item>
+        <item>Máximo 1 proceso</item>
+        <item>Máximo 2 procesos</item>
+        <item>Máximo 3 procesos</item>
+        <item>Máximo 4 procesos</item>
+    </string-array>
+    <string-array name="cache_size">
+        <item>128 KB (default)</item>
+        <item>256 KB</item>
+        <item>512 KB</item>
+        <item>1 MB</item>
+        <item>2 MB</item>
+        <item>4 MB</item>
+    </string-array>
+
+</resources>
