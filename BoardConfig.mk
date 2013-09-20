@@ -19,6 +19,12 @@
 
 include device/samsung/msm7x27-common/BoardConfigCommon.mk
 
+## Dalvik VM
+TARRGET_ARCH_LOWMEM := true
+
+## Fonts - minimal footprint (saves ~2MB)
+MINIMAL_FONT_FOOTPRINT := true
+
 ## Lights - generic driver works better for galaxy5
 TARGET_PROVIDES_LIBLIGHT := false
 
@@ -37,11 +43,7 @@ BOARD_BML_BOOT := "/dev/block/bml9"
 BOARD_BML_RECOVERY := "/dev/block/bml10"
 BOARD_LDPI_RECOVERY := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := "<font_7x16.h>"
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/galaxy5/recovery/recovery_keys.c
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/galaxy5/recovery/graphics.c
-TARGET_RECOVERY_INITRC := device/samsung/galaxy5/recovery/recovery.rc
-TARGET_RECOVERY_FSTAB := device/samsung/galaxy5/recovery/recovery.fstab
 
-SMALLER_FONT_FOOTPRINT := true
+## Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/galaxy5/bluetooth
 

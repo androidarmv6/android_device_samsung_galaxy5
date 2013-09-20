@@ -12,50 +12,21 @@ persist.sys.extamp-otherheadset=18
 persist.sys.extamp-speaker=29
 
 # Dalvik
-dalvik.vm.checkjni=0
-dalvik.vm.dexopt-data-only=1
-dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
-dalvik.vm.heapgrowthlimit=36m
+dalvik.vm.heapgrowthlimit=24m
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=2m
-dalvik.vm.heapsize=64m
+dalvik.vm.heapsize=32m
 dalvik.vm.heapstartsize=5m
-dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heaptargetutilization=0.25
 
 # Galaxy5Parts
 persist.sys.dynlmk=1
-persist.sys.dynlmk-adj=0,1,2,4,9,15
-persist.sys.dynlmk-minfree=1536,2048,4096,15120,15360,23040
+persist.sys.dynlmk-adj=0,1,2,7,14,15
+persist.sys.dynlmk-minfree=1536,2048,6144,8192,12288,15360
 persist.sys.fakedt=0
 
 # Graphics
-debug.composition.type=mdp
-debug.sf.no_hw_vsync=0
 ro.sf.lcd_density=120
 
 # Memory
 persist.sys.purgeable_assets=1
-
-# Other
-dev.sfbootcomplete=0
-ro.com.android.wifi-watchlist=GoogleGuest
-ro.config.play.bootsound=0
-ro.setupwizard.enable_bypass=1
-
-# RIL, telephony
-DEVICE_PROVISIONED=1
-mobiledata.interfaces=pdp0,gprs,ppp0
-rild.libargs=-d /dev/smd0
-rild.libpath=/system/lib/libsec-ril.so
-ro.telephony.default_network=0
-ro.telephony.ril_class=SamsungMSMRIL
-
-# USB
-persist.service.adb.enable=1
-persist.sys.usb.config=mass_storage,adb
-ro.vold.umsdirtyratio=20
-
-# WiFi
-wifi.ap.interface=wlan0
-wifi.interface=wlan0
-wifi.supplicant_scan_interval=180
