@@ -16,10 +16,10 @@
 ## BoardConfig files. 3.0 Kernel & ath6kl configuration must be set here.
 
 ## Build the 3.0.x Kernel
-BUILD_WITH_30X_KERNEL := true
+#BUILD_WITH_30X_KERNEL := true
 
 ## Build the ath6kl-compat driver
-BOARD_WLAN_DEVICE := ath6kl_compat
+#BOARD_WLAN_DEVICE := ath6kl_compat
 
 ## Camera
 PRODUCT_PACKAGES += \
@@ -49,10 +49,6 @@ PRODUCT_PACKAGES += \
 ## Touchscreen (GT-I5508 resistive)
 PRODUCT_COPY_FILES += \
     device/samsung/galaxy5/prebuilt/usr/idc/msm_touchscreen.idc:system/usr/idc/msm_touchscreen.idc
-
-## Ramdisk
-PRODUCT_COPY_FILES += \
-    device/samsung/galaxy5/ramdisk/init.gt-i5500board.rc:root/init.gt-i5500board.rc
 
 # Inherit products (Most specific first)
 # galaxy5 blobs > samsung common(device/vendor) > other blobs
