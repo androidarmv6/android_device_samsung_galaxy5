@@ -42,7 +42,9 @@
 #include <termios.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <linux/i2c/bma222.h>
+//#include <linux/i2c/bma222.h>
+#define BMA222_IOC_MAGIC 	'B' /* from linux/i2c/bma222.h */
+#define BMA222_READ_ACCEL_XYZ	_IOWR(BMA222_IOC_MAGIC,46,signed char) /* from linux/i2c/bma222.h */
 #include <linux/i2c/mmc31xx.h>
 #include <linux/i2c/mecs.h>
 #include <signal.h>

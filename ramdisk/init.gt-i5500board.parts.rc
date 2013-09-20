@@ -1,6 +1,17 @@
-# Galaxy5Parts
+## Miscellaneous services/config
 
-on boot
+service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --baudrate 3000000 --patchram /system/etc/firmware/BCM2049B0_BCM20780B0_002.001.022.0170.0174.hcd /dev/ttyHS0
+    class main
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+service g5sensord /system/bin/g5sensord
+    class main
+    user system
+    group system
+    oneshot
 
 # galaxy5parts - helper service
 service galaxy5parts /system/bin/sh /system/bin/handle_galaxy5parts
