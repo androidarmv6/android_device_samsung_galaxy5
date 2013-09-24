@@ -57,7 +57,7 @@ $(call inherit-product, device/samsung/msm7x27-common/common.mk)
 $(call inherit-product, vendor/samsung/msm7x27-common/vendor.mk)
 
 ## LDPI assets
-PRODUCT_AAPT_CONFIG := normal mdpi ldpi
+PRODUCT_AAPT_CONFIG := normal ldpi
 PRODUCT_AAPT_PREF_CONFIG := ldpi
 $(call inherit-product, device/ldpi-common/ldpi.mk)
 
