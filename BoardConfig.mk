@@ -20,7 +20,7 @@
 include device/samsung/msm7x27-common/BoardConfigCommon.mk
 
 ## Dalvik VM
-TARRGET_ARCH_LOWMEM := true
+TARGET_ARCH_LOWMEM := true
 
 ## Fonts - minimal footprint (saves ~2MB)
 MINIMAL_FONT_FOOTPRINT := true
