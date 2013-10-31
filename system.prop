@@ -2,15 +2,6 @@
 # system.prop for GT-I5500
 #
 
-# Audio
-persist.sys.attn-fm=0
-persist.sys.attn-headset=0
-persist.sys.attn-speaker=0
-persist.sys.extamp-fmheadset=20
-persist.sys.extamp-nomicheadset=26
-persist.sys.extamp-otherheadset=18
-persist.sys.extamp-speaker=29
-
 # Dalvik
 dalvik.vm.heapgrowthlimit=24m
 dalvik.vm.heapminfree=512k
@@ -18,12 +9,6 @@ dalvik.vm.heapmaxfree=2m
 dalvik.vm.heapsize=32m
 dalvik.vm.heapstartsize=5m
 dalvik.vm.heaptargetutilization=0.25
-
-# Galaxy5Parts
-persist.sys.dynlmk=1
-persist.sys.dynlmk-adj=0,1,2,4,9,15
-persist.sys.dynlmk-minfree=1536,2048,4096,15120,15360,23040
-persist.sys.fakedt=0
 
 # Graphics
 ro.sf.lcd_density=120
