@@ -13,8 +13,10 @@ service g5sensord /system/bin/g5sensord
     group system
     oneshot
 
-# galaxy5parts - helper service
-service galaxy5parts /system/bin/sh /system/bin/handle_galaxy5parts
+### GalaxyParts ###
+
+# galaxyparts - helper service
+service galaxyparts /system/bin/sh /system/bin/galaxyparts
     class main
     user root
     group root
@@ -22,30 +24,32 @@ service galaxy5parts /system/bin/sh /system/bin/handle_galaxy5parts
 
 # compcache - check dynamic lmk
 on property:persist.service.zram=*
-    setprop persist.sys.galaxy5parts lowmemorykiller
-    start galaxy5parts
+    setprop persist.sys.galaxyparts lowmemorykiller
+    start galaxyparts
 
 # adjust dual-touch permissions
 on property:persist.sys.fakedt=*
-    setprop persist.sys.galaxy5parts fakedt
-    start galaxy5parts
+    setprop persist.sys.galaxyparts fakedt
+    start galaxyparts
 
 # dynamic lowmemorykiller
 on property:persist.sys.dynlmk=*
-    setprop persist.sys.galaxy5parts lowmemorykiller
-    start galaxy5parts
+    setprop persist.sys.galaxyparts lowmemorykiller
+    start galaxyparts
 
 # sd read-ahead
 on property:persist.sys.read_ahead_kb=*
-    setprop persist.sys.galaxy5parts readahead
-    start galaxy5parts
+    setprop persist.sys.galaxyparts readahead
+    start galaxyparts
 
 # swap
 on property:persist.sys.swap=*
-    setprop persist.sys.galaxy5parts swap
-    start galaxy5parts
+    setprop persist.sys.galaxyparts swap
+    start galaxyparts
 
 # ensure that customization are enabled upon boot
 on property:sys.boot_completed=1
-    setprop persist.sys.galaxy5parts bootcheck
-    start galaxy5parts
+    setprop persist.sys.galaxyparts bootcheck
+    start galaxyparts
+
+### GalaxyParts ###
