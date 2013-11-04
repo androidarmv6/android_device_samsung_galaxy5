@@ -19,7 +19,7 @@
 #BUILD_WITH_30X_KERNEL := true
 
 ## Build the ath6kl-compat driver
-BOARD_WLAN_DEVICE := ath6kl_compat
+#BOARD_WLAN_DEVICE := ath6kl_compat
 
 ## Camera
 PRODUCT_PACKAGES += \
