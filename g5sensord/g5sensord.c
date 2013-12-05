@@ -48,6 +48,9 @@
 #include <linux/i2c/mmc31xx.h>
 #include <linux/i2c/mecs.h>
 #include <signal.h>
+#include <cutils/log.h>
+
+#define LOG_TAG "g5sensord"
 
 int enabled = 1;
 
@@ -256,13 +259,12 @@ int main(int argc, char *argv[])
 	srand((unsigned int) time(NULL));
 
 	/* control loop terminating with option 99 */
-	printf("\ng5sensord - Freescale eCompass and Magnetic Calibration Software (OuNao mod)\n");
+	ALOGI("g5sensord - Freescale eCompass and Magnetic Calibration Software (OuNao mod)");
 
 	// OuNao inclusions - start
 	ResetCalibrationFunc();
 	SOLUTIONSIZE=7;
 	
-/* //psyke83 - disable calibration temporarily
 	// save/get calibration values
 	if(( fp = fopen("/data/misc/sensors/g5s_calib", "rb+")) != NULL) {
 	  fread(&fVx, sizeof(float), 1, fp);
@@ -279,13 +281,12 @@ int main(int argc, char *argv[])
 	  }
 	}
 	else {
-	  printf("Cannot open file. Creating new file...\n");
+	  ALOGW("Cannot open /data/misc/sensors/g5s_calib. Creating new file...");
 	  fp = fopen("/data/misc/sensors/g5s_calib", "wb+");
 	}
 	fclose(fp);
-*/
 
-	//printf("\nfVx= %f, fVy= %f, fVz= %f\n", fVx, fVy, fVz);
+	//ALOGV("\nfVx= %f, fVy= %f, fVz= %f\n", fVx, fVy, fVz);
 	//fmatrixPrintA(finvW, 0, 2, 0, 2);
 	
 	/* keyboard command interpreter */
@@ -298,19 +299,19 @@ int main(int argc, char *argv[])
 	fd_ecompass = open("/dev/ecompass_ctrl", O_RDWR);
 	if (ioctl(fd_ecompass, ECOMPASS_IOC_GET_AFLAG, &aflag)<0)
 	{
-	  printf("eCompass ioctl error\n");
+	  ALOGE("eCompass ioctl error");
 	};
 	if (ioctl(fd_ecompass, ECOMPASS_IOC_GET_MFLAG, &mflag)<0)
 	{
-	  printf("eCompass ioctl error\n");
+	  ALOGE("eCompass ioctl error");
 	};
 	if (ioctl(fd_ecompass, ECOMPASS_IOC_GET_OFLAG, &oflag)<0)
 	{
-	  printf("eCompass ioctl error\n");
+	  ALOGE("eCompass ioctl error");
 	};
 	
 	/* call sensor driver simulation to get float acc fGpxyz (g) and mag fBpxyz (uT) data */
-	//printf("\nIteration: %6d",  i);
+	//ALOGV("\nIteration: %6d",  i);
 	fSixDOFSensorDrivers(i);
 
 	/* NED magnetometer HAL to correct for package orientation on PCB and gain */
@@ -336,8 +337,8 @@ int main(int argc, char *argv[])
 	{
 	/* pass the accel and calibrated mag data to the eCompass */
 	feCompass(fBcx, fBcy, fBcz, fGpx, fGpy, fGpz);
-	//printf("\nf6DOFOutp: Phi   %6.2f   The %6.2f   Psi %6.2f   delta %6.2f", fPhi, fThe, fPsi, fdelta);
-	//printf("\nf6DOFOutp: LPPhi %6.2f LPThe %6.2f LPPsi %6.2f LPdelta %6.2f", fLPPhi, fLPThe, fLPPsi, fLPdelta);
+	//ALOGV("\nf6DOFOutp: Phi   %6.2f   The %6.2f   Psi %6.2f   delta %6.2f", fPhi, fThe, fPsi, fdelta);
+	//ALOGV("\nf6DOFOutp: LPPhi %6.2f LPThe %6.2f LPPsi %6.2f LPdelta %6.2f", fLPPhi, fLPThe, fLPPsi, fLPdelta);
 
 	/* update the constellation */
 	fUpdateConstellation();
@@ -370,11 +371,11 @@ int main(int argc, char *argv[])
 		}
 		else /* still too few entries in constellation for calibration */
 		{
-			//printf("\n%d entries in constellation is too few for calibration", ConstCount);
+			//ALOGW("\n%d entries in constellation is too few for calibration", ConstCount);
 		}
 	} /* end of test for active calibration flag */
 	
-	  //printf("\nfBpx= %f, fBcx= %f, fBpy= %f, fBcy= %f, fBpz= %f, fBcz= %f, ", fBpx, fBcx, fBpy, fBcy, fBpz, fBcz);
+	  //ALOGV("\nfBpx= %f, fBcx= %f, fBpy= %f, fBcy= %f, fBpz= %f, fBcz= %f, ", fBpx, fBcx, fBpy, fBcy, fBpz, fBcz);
 	}
 
 	if (fPsi<0) fPsi+=360;
@@ -466,7 +467,7 @@ void feCompass(float fBx, float fBy, float fBz, float fGx, float fGy, float fGz)
 	if ((fThe>80.0F) && (fThe<120.0F) && (fBfy<0.0F)){
 	  fBfy = fBfy * -1.0F;
 	}
-	//printf("\nfBfx=%f, fBfy=%f, fBfz=%f, fGx=%f, fGy=%f, fGz=%f", fBfx, fBfy, fBfz, fGx, fGy, fGz);
+	//ALOGV("\nfBfx=%f, fBfy=%f, fBfz=%f, fGx=%f, fGy=%f, fGz=%f", fBfx, fBfy, fBfz, fGx, fGy, fGz);
 
 	/* calculate yaw = ecompass angle psi (-180deg, 180deg) with or without tilt compensation */
 	if (TILTCORRACTIVE)
@@ -577,7 +578,7 @@ void fUpdateCalibration7SVD(void)
 	float ftmpx, ftmpy, ftmpz;		/* scratch variables */
 	FILE *fp;
 
-	//printf("\n\nCalculating 7 element SVD calibration at iteration %d with %d in Smart FIFO", loopcounter, ConstCount);
+	//ALOGI("\n\nCalculating 7 element SVD calibration at iteration %d with %d in Smart FIFO", loopcounter, ConstCount);
 
 	/* the offsets are guaranteed to be set from the first element but to avoid compiler error */
 	fOffsetx = fOffsety = fOffsetz = 0.0F;
@@ -688,13 +689,13 @@ void fUpdateCalibration7SVD(void)
 
 	/* calculate the normalised fit error as a percentage */
 	fFitErrorpc = S[6][0] / (2.0F * fB * fB * (float)sqrt((double) nequations)) * 100.0F;
-	//printf("\nCalibration Fit Error (%%)=%9.3f", fFitErrorpc);
+	//ALOGE("\nCalibration Fit Error (%%)=%9.3f", fFitErrorpc);
 
 	/* correct for the measurement matrix offset and scaling and get the computed hard iron offset in uT */
 	fVx = fVx * finvSVDscaling + fOffsetx;
 	fVy = fVy * finvSVDscaling + fOffsety;
 	fVz = fVz * finvSVDscaling + fOffsetz;
-	//printf("\nCalibration hard iron (in uT) Vx=%9.3f Vy=%9.3f Vz=%9.3f", fVx, fVy, fVz);
+	//ALOGV("\nCalibration hard iron (in uT) Vx=%9.3f Vy=%9.3f Vz=%9.3f", fVx, fVy, fVz);
 
 	/* convert the geomagnetic field strength B into uT for current soft iron matrix A */
 	fB *= finvSVDscaling;
@@ -702,26 +703,25 @@ void fUpdateCalibration7SVD(void)
 	/* normalise the ellipsoid matrix A to unit determinant and correct B by root of this multiplicative factor */
 	fmatrixAeqAxScalar(A, (float)pow((double)det, (double) (-1.0F / 3.0F)), 3, 3);
 	fB *= (float)pow((double)det, (double) (-1.0F / 6.0F));
-	//printf("\n\nCalibration geomagnetic field (uT) B=%9.3f", fB);
+	//ALOGV("\n\nCalibration geomagnetic field (uT) B=%9.3f", fB);
 
 	/* compute invW from the square root of A also with normalised determinant */
 	finvW[0][0] = (float)sqrt(fabs(A[0][0]));
 	finvW[1][1] = (float)sqrt(fabs(A[1][1]));
 	finvW[2][2] = (float)sqrt(fabs(A[2][2]));
 	finvW[0][1] = finvW[0][2] = finvW[1][0] = finvW[1][2] = finvW[2][0] = finvW[2][1] = 0.0F;
-	//printf("\n\nCalibration inverse soft iron matrix invW (normalized)");
+	//ALOGI("\n\nCalibration inverse soft iron matrix invW (normalized)");
 	//fmatrixPrintA(finvW, 0, 2, 0, 2);
 
 	/* for convenience show the original optimal invW */
-	//printf("\nFor comparison: Simulation inverse soft iron matrix invW (normalized)");
+	//ALOGI("\nFor comparison: Simulation inverse soft iron matrix invW (normalized)");
 	//fmatrixPrintA(invSimW, 0, 2, 0, 2);
 
 	/* finally set the valid calibration flag to true */
 	validcal = 1;
 
-/* //psyke83 - disable calibration temporarily
 	if(( fp = fopen("/data/misc/sensors/g5s_calib", "rb+")) == NULL) {
-	  printf("Cannot open file.\n");
+	  ALOGW("Cannot open /data/misc/sensors/g5s_calib");
 	}
 	if( fp != NULL) {
 	  fwrite(&fVx, sizeof(float), 1, fp);
@@ -735,7 +735,6 @@ void fUpdateCalibration7SVD(void)
 	  fwrite(&ftmpz, sizeof(float), 1, fp);
 	}
 	fclose(fp);
-*/
 	return;
 }
 
@@ -746,7 +745,7 @@ void fUpdateCalibration4INV(void)
 	float fOffsetx, fOffsety, fOffsetz;     /* offset to remove large DC hard iron bias in matrix */
 	float ftmpBpx, ftmpBpy, ftmpBpz;        /* scratch variables */
 
-	printf("\n\nCalculating 4 element INV calibration at iteration %d with %d in Smart FIFO", loopcounter, ConstCount);
+	ALOGI("Calculating 4 element INV calibration at iteration %d with %d in Smart FIFO", loopcounter, ConstCount);
 
 	/* the offsets are guaranteed to be set from the first element but to avoid compiler error */
 	fOffsetx = fOffsety = fOffsetz = 0.0F;
@@ -860,17 +859,17 @@ void fUpdateCalibration4INV(void)
 
 	/* normalise the Fit Error (percent) to the scaled bit count geomagnetic field B */
 	fFitErrorpc /= (2.0F * fB * fB); 
-	printf("\nCalibration Fit Error (%%)=%9.3f", fFitErrorpc);
+	ALOGI("Calibration Fit Error (%%)=%9.3f", fFitErrorpc);
 
 	/* correct for the measurement matrix offset and scaling and get the computed hard iron offset in uT */
 	fVx = fVx * finvSVDscaling + fOffsetx;
 	fVy = fVy * finvSVDscaling + fOffsety;
 	fVz = fVz * finvSVDscaling + fOffsetz;
-	printf("\nCalibration hard iron (uT) Vx=%9.3f Vy=%9.3f Vz=%9.3f", fVx, fVy, fVz);
+	ALOGI("Calibration hard iron (uT) Vx=%9.3f Vy=%9.3f Vz=%9.3f", fVx, fVy, fVz);
 
 	/* convert the geomagnetic field strength B into uT */
 	fB *= finvSVDscaling;
-	printf("\nCalibrated geomagnetic field (uT) B=%9.3f", fB);
+	ALOGI("Calibrated geomagnetic field (uT) B=%9.3f", fB);
 
 	/* finally set the valid calibration flag to true */
 	validcal = 1;
@@ -1012,10 +1011,10 @@ void fmatrixPrintA(float **A, int r1, int r2, int c1, int c2)
 
 	for (i = r1; i <= r2; i++)
 	{
-		printf("\nRow %d", i);
+		ALOGV("\nRow %d", i);
 		for (j = c1; j <= c2; j++)
 		{
-			printf("%12.5f", (double) A[i][j]);
+			ALOGV("%12.5f", (double) A[i][j]);
 		}
 	}
 	return;
@@ -1059,7 +1058,7 @@ void f3x3matrixAeqInvB(float **A, float **B)
 	else
 	{
 		/* provide the identity matrix if the determinant is zero */
-		printf("\nZero determinant detected in f3x3matrixAeqInvB");
+		ALOGI("\nZero determinant detected in f3x3matrixAeqInvB");
 		A[0][0] = A[1][1] = A[2][2] = 1.0F; 
 		A[0][1] = A[0][2] = A[1][0] = A[1][2] = A[2][0] = A[2][1] = 0.0F;
 	}
@@ -1125,7 +1124,7 @@ void f4x4matrixAeqInvB(float **A, float **B)
 	else
 	{
 		/* provide the identity matrix if the determinant is zero */
-		printf("\nZero determinant detected in f4x4matrixAeqInvB");
+		ALOGI("\nZero determinant detected in f4x4matrixAeqInvB");
 		for (i = 0; i < 4; i++)
 		{
 			for (j = 0; j < 4; j++)
@@ -1173,7 +1172,7 @@ void fSixDOFSensorDrivers(int k)
 	fBpy = (float)mag[1]/10;
 	fBpz = (float)mag[2]/10;
 	}
-	//printf("fGpx %f, fGpy %f, fGpz %f, fBpx %f, fBpy %f, fBpz %f\n", fGpx, fGpy, fGpz, fBpx, fBpy, fBpz);
+	//ALOGI("fGpx %f, fGpy %f, fGpz %f, fBpx %f, fBpy %f, fBpz %f\n", fGpx, fGpy, fGpz, fBpx, fBpy, fBpz);
 	
 	// close sensors if possible
 	if (prev_aflag==1 || prev_oflag==1) {
@@ -1476,7 +1475,7 @@ void SVDcompute(float **mat, int m, int n, float **w, float **v)
 			}
 			if (its == 30) 
 			{
-				printf("\nNo convergence in 30 SVDcompute iterations");
+				ALOGW("\nNo convergence in 30 SVDcompute iterations");
 			}
 			x = w[l][0]; 
 			nm = k - 1;
