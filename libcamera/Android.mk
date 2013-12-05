@@ -41,28 +41,34 @@ include $(BUILD_SHARED_LIBRARY)
 
 ## Make camera wrapper
 
-
-include $(CLEAR_VARS)
-
-#LOCAL_C_FLAGS        += -O3
-LOCAL_MODULE_TAGS    := optional
-LOCAL_MODULE_PATH    := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_MODULE         := camera.$(TARGET_BOOTLOADER_BOARD_NAME)
-LOCAL_SRC_FILES      := cameraHal.cpp
-LOCAL_PRELINK_MODULE := false
-
-LOCAL_SHARED_LIBRARIES := liblog libdl libutils libcamera_client libbinder libcutils libhardware libui libcamera
-LOCAL_C_INCLUDES       := frameworks/base/services/ frameworks/base/include
-LOCAL_C_INCLUDES       += hardware/libhardware/include/ hardware
-
 ifneq ($(TARGET_QCOM_DISPLAY_VARIANT),)
     DISPLAY := display-$(TARGET_QCOM_DISPLAY_VARIANT)
 else
     DISPLAY := display
 endif
 
-LOCAL_C_INCLUDES       += hardware/qcom/$(DISPLAY)/libgralloc
+include $(CLEAR_VARS)
+
+LOCAL_C_FLAGS          += -O3
+LOCAL_MODULE_TAGS      := optional
+LOCAL_MODULE_PATH      := $(TARGET_OUT_SHARED_LIBRARIES)/hw
+LOCAL_MODULE           := camera.$(TARGET_BOOTLOADER_BOARD_NAME)
+
+LOCAL_SRC_FILES        := QcomCamera.cpp
+
+LOCAL_SHARED_LIBRARIES := liblog libdl libutils libcamera_client libbinder \
+                          libcutils libhardware libui libcamera
+
+LOCAL_C_INCLUDES       := frameworks/base/services \
+                          frameworks/base/include \
+                          hardware/libhardware/include
+
 LOCAL_C_INCLUDES       += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+
+LOCAL_CFLAGS           := -DPREVIEW_MSM7K
+LOCAL_C_INCLUDES       += hardware/qcom/$(DISPLAY)/libgralloc
+
+LOCAL_PRELINK_MODULE   := false
 
 include $(BUILD_SHARED_LIBRARY)
