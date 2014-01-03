@@ -3,15 +3,14 @@
 #
 
 # Dalvik
-dalvik.vm.execution-mode=int:fast
-dalvik.vm.heapgrowthlimit=32m
+dalvik.vm.heapgrowthlimit=24m
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=2m
-dalvik.vm.heapsize=48m
+dalvik.vm.heapsize=32m
 dalvik.vm.heapstartsize=5m
+dalvik.vm.heaptargetutilization=0.25
 
 # Graphics
-persist.sys.ui.hw=true
 ro.sf.lcd_density=120
 
 # Memory
