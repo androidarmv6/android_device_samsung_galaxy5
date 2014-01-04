@@ -21,11 +21,6 @@
 ## Build the ath6kl-compat driver
 BOARD_WLAN_DEVICE := ath6kl_compat
 
-## Camera
-PRODUCT_PACKAGES += \
-    camera.galaxy5 \
-    libcamera
-
 ## GalaxyParts support files
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.xml:system/galaxyparts/etc/permissions/android.hardware.touchscreen.xml \
