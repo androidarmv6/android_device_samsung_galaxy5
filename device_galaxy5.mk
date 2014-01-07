@@ -29,8 +29,7 @@ PRODUCT_PACKAGES += \
 ## GalaxyParts support files
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.xml:system/galaxyparts/etc/permissions/android.hardware.touchscreen.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/galaxyparts/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
-    device/samsung/galaxy5/ramdisk/init.gt-i5500board.parts.rc:root/init.gt-i5500board.parts.rc
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/galaxyparts/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 ## Keypad
 PRODUCT_COPY_FILES += \
