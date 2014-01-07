@@ -5,6 +5,9 @@
  * Modified by Andrew Sutherland <dr3wsuth3rland@gmail.com>
  *              for The Evervolv Project's qsd8k lineup
  *
+ * Modified by Conn O'Griofa <connogriofa@gmail.com>
+ *              for The AndroidARMv6 Project's msm7x27 lineup
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -53,9 +56,15 @@ extern "C" {
  */
 
 /* Prototypes and extern functions. */
+#if DLOPEN_LIBCAMERA
 android::sp<android::CameraHardwareInterface> (*LINK_openCameraHardware)(int id);
 int (*LINK_getNumberofCameras)(void);
 void (*LINK_getCameraInfo)(int cameraId, struct camera_info *info);
+#else
+using android::HAL_getCameraInfo;
+using android::HAL_getNumberOfCameras;
+using android::HAL_openCameraHardware;
+#endif
 
 /* Global variables. */
 camera_notify_callback         origNotify_cb    = NULL;
@@ -343,7 +352,13 @@ void internal_fixup_settings(CameraParameters &settings)
       "1280x720,800x480,768x432,720x480,640x480,576x432,480x320,384x288,352x288,320x240,240x160,176x144";
    const char *video_sizes =
       "1280x720,800x480,720x480,640x480,352x288,320x240,176x144";
+#if defined(SENSOR_SIZE_5MP)
+   const char *preferred_size       = "640x480";
+#elif defined(SENSOR_SIZE_3MP)
+   const char *preferred_size       = "480x320";
+#else /* SENSOR_SIZE_2MP */
    const char *preferred_size       = "320x240";
+#endif
    const char *preview_frame_rates  = "30,27,24,15";
    const char *preferred_frame_rate = "15";
    const char *frame_rate_range     = "(15,30)";
@@ -395,6 +410,30 @@ void internal_fixup_settings(CameraParameters &settings)
    if (!settings.get(android::CameraParameters::KEY_VERTICAL_VIEW_ANGLE)) {
       settings.set(android::CameraParameters::KEY_VERTICAL_VIEW_ANGLE,
                    preferred_vertical_viewing_angle);
+   }
+
+   if (settings.get(android::CameraParameters::KEY_MAX_CONTRAST)) {
+      settings.set("max-contrast",
+                  settings.get(android::CameraParameters::KEY_MAX_CONTRAST));
+   } else {
+      settings.set("max-contrast",
+                  -1);
+   }
+
+   if (settings.get(android::CameraParameters::KEY_MAX_SATURATION)) {
+      settings.set("max-saturation",
+                  settings.get(android::CameraParameters::KEY_MAX_SATURATION));
+   } else {
+      settings.set("max-saturation",
+                  -1);
+   }
+
+   if (settings.get(android::CameraParameters::KEY_MAX_SHARPNESS)) {
+      settings.set("max-sharpness",
+                  settings.get(android::CameraParameters::KEY_MAX_SHARPNESS));
+   } else {
+      settings.set("max-sharpness",
+                  -1);
    }
 }
 
@@ -462,6 +501,7 @@ extern "C" int get_number_of_cameras(void)
    int numCameras = 1;
 
    ALOGV("get_number_of_cameras:");
+#if DLOPEN_LIBCAMERA
    void *libcameraHandle = ::dlopen("libcamera.so", RTLD_NOW);
    ALOGD("HAL_get_number_of_cameras: loading libcamera at %p", libcameraHandle);
    if (!libcameraHandle) {
@@ -475,11 +515,15 @@ extern "C" int get_number_of_cameras(void)
       }
       dlclose(libcameraHandle);
    }
+#else
+   numCameras = HAL_getNumberOfCameras();
+#endif
    return numCameras;
 }
 
 extern "C" int get_camera_info(int camera_id, struct camera_info *info)
 {
+#if DLOPEN_LIBCAMERA
    bool dynamic = false;
    ALOGV("get_camera_info:");
    void *libcameraHandle = ::dlopen("libcamera.so", RTLD_NOW);
@@ -500,6 +544,17 @@ extern "C" int get_camera_info(int camera_id, struct camera_info *info)
       info->facing      = CAMERA_FACING_BACK;
       info->orientation = 90;
    }
+#else
+   CameraInfo cameraInfo;
+
+   ALOGV("get_camera_info:");
+
+   HAL_getCameraInfo(camera_id, &cameraInfo);
+
+   info->facing = cameraInfo.facing;
+   info->orientation = info->facing == 1 ? 270 : 90;
+#endif
+
    return NO_ERROR;
 }
 
@@ -518,6 +573,7 @@ extern "C" int camera_device_open(const hw_module_t* module, const char* id,
     if(module && id && hw_device) {
         int cameraId = atoi(id);
         signal(SIGFPE,(*sighandle)); //@nAa: Bad boy doing hacks
+#if LIBCAMERA_DLOPEN
         void * libcameraHandle = ::dlopen("libcamera.so", RTLD_NOW);
 
         if (libcameraHandle) {
@@ -552,6 +608,22 @@ extern "C" int camera_device_open(const hw_module_t* module, const char* id,
                 rc = 0;
             }
         }
+#else
+        qCamera = HAL_openCameraHardware(cameraId);
+
+        device = (camera_device *)malloc(sizeof (struct camera_device));
+
+        if(device) {
+            //memset(device, 0, sizeof(*device));
+            // Dont think these are needed
+            //device->common.tag              = HARDWARE_DEVICE_TAG;
+            //device->common.version          = 0;
+            //device->common.module           = (hw_module_t *)(module);
+            device->common.close            = close_camera_device;
+            device->ops                     = &camera_ops;
+            rc = 0;
+        }
+#endif
     }
     *hw_device = (hw_device_t*)device;
     ALOGD("%s:--",__FUNCTION__);
@@ -622,6 +694,12 @@ void disable_msg_type(struct camera_device * device, int32_t msg_type)
    if (msg_type == 0xfff) {
       msg_type = 0x1ff;
    }
+
+   /* The camera app disables the shutter too early which leads to crash.
+    * Leaving it enabled. */
+   if (msg_type == CAMERA_MSG_SHUTTER)
+       return;
+
    qCamera->disableMsgType(msg_type);
 }
 
