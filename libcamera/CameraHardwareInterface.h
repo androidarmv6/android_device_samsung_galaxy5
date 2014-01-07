@@ -46,12 +46,19 @@ typedef void (*notify_callback)(int32_t msgType,
 typedef void (*data_callback)(int32_t msgType,
                               const sp<IMemory>& dataPtr,
                               void* user);
-
+#ifdef OMAP_ENHANCEMENT
+typedef void (*data_callback_timestamp)(nsecs_t timestamp,
+                                        int32_t msgType,
+                                        const sp<IMemory>& dataPtr,
+                                        void* user,
+                                        uint32_t offset,
+                                        uint32_t stride);
+#else
 typedef void (*data_callback_timestamp)(nsecs_t timestamp,
                                         int32_t msgType,
                                         const sp<IMemory>& dataPtr,
                                         void* user);
-
+#endif
 /**
  * CameraHardwareInterface.h defines the interface to the
  * camera hardware abstraction layer, used for setting and getting
@@ -134,6 +141,12 @@ public:
      * information before starting the recording.
      */
     virtual status_t    getBufferInfo(sp<IMemory>& Frame, size_t *alignedSize) = 0;
+#endif
+#ifdef CAF_CAMERA_GB_REL
+    /**
+     * Encode the YUV data.
+     */
+    virtual void        encodeData() = 0;
 #endif
 
     /**

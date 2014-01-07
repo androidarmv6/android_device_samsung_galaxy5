@@ -44,3 +44,6 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := "<font_7x16.h>"
 ## Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/galaxy5/bluetooth
 
+## Camera
+BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
+
