@@ -2,10 +2,4 @@
 <resources>
     <!-- Enable dualtouch feature in interface -->
     <bool name="dualtouch_feature">true</bool>
-
-    <!-- Default dynamic lowmemorykiller profile (0 to disable): -->
-    <string translatable="false" name="dynlmk_default">2</string>
-
-    <!-- Default process limit value (-1 for framework-managed) -->
-    <string translatable="false" name="processlimit_default">2</string>
 </resources>
