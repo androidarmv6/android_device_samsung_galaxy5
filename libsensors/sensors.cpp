@@ -126,6 +126,7 @@ private:
     bool mAccelActive;
     bool mMagnetActive;
     bool mOrientationActive;
+    bool mFirstBoot;
 
     int real_activate(int handle, int enabled);
 
@@ -176,6 +177,7 @@ sensors_poll_context_t::sensors_poll_context_t()
     mAccelActive = false;
     mMagnetActive = false;
     mOrientationActive = false;
+    mFirstBoot = true; // we must assume that the daemon is enabled on startup
 }
 
 sensors_poll_context_t::~sensors_poll_context_t() {
@@ -188,7 +190,10 @@ sensors_poll_context_t::~sensors_poll_context_t() {
 
 int sensors_poll_context_t::activate(int handle, int enabled) {
     int prev_state, state;
-    if (mOrientationActive==true || mAccelActive==true || mMagnetActive==true) prev_state=1;
+    if (mOrientationActive==true || mAccelActive==true || mMagnetActive==true || mFirstBoot==true) {
+       prev_state=1;
+       mFirstBoot=false;
+    }
     else prev_state=0;
     if (handle == ID_O) {
         mOrientationActive = enabled ? true : false;
