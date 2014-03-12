@@ -9,6 +9,11 @@ TARGET_SCREEN_HEIGHT := 320
 TARGET_SCREEN_WIDTH := 240
 $(call inherit-product, vendor/cm/config/mini.mk)
 
+# Inherit LDPI overlay, if needed
+ifeq ($(PRODUCT_AAPT_PREF_CONFIG),ldpi)
+$(call inherit-product, device/ldpi-common/ldpi.mk)
+endif
+
 # Overrides
 PRODUCT_NAME := cm_galaxy5
 PRODUCT_DEVICE := galaxy5
