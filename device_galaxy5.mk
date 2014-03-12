@@ -53,7 +53,6 @@ $(call inherit-product, vendor/samsung/msm7x27-common/vendor.mk)
 ## LDPI assets
 PRODUCT_AAPT_CONFIG := normal mdpi ldpi
 PRODUCT_AAPT_PREF_CONFIG := ldpi
-$(call inherit-product, device/ldpi-common/ldpi.mk)
 
 ## Inherit overlays  (Most specific last)
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxy5/overlay
