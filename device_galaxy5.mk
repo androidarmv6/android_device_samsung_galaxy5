@@ -21,6 +21,10 @@
 ## Build the ath6kl-compat driver
 BOARD_WLAN_DEVICE := ath6kl_compat
 
+## TEST
+PRODUCT_PACKAGES += \
+    libGLES_hgl
+
 ## Camera
 PRODUCT_PACKAGES += \
     camera.galaxy5 \

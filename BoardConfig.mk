@@ -19,6 +19,10 @@
 
 include device/samsung/msm7x27-common/BoardConfigCommon.mk
 
+BOARD_USES_BROADCOM_HARDWARE := true
+COMMON_GLOBAL_CFLAGS += -DBCM_HARDWARE
+TARGET_QCOM_DISPLAY_VARIANT :=
+
 ## Fonts - minimal footprint (saves ~2MB)
 MINIMAL_FONT_FOOTPRINT := true
 
