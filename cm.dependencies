@@ -1,31 +1,6 @@
 [
  {
-   "repository": "android_kernel_samsung_msm",
-   "target_path": "kernel/samsung/msm",
-   "branch": "jb_chocolate-samsung"
- }, {
-   "repository": "android_kernel_samsung_msm7x27",
-   "target_path": "kernel/samsung/msm7x27"
- }, {
-   "repository": "android_device_qcom_msm7x27",
-   "target_path": "device/qcom/msm7x27"
- }, {
    "repository": "android_device_samsung_msm7x27-common",
    "target_path": "device/samsung/msm7x27-common"
- }, {
-   "repository": "android_vendor_samsung",
-   "target_path": "vendor/samsung"
- }, {
-   "repository": "android_vendor_qcom_msm7x27",
-   "target_path": "vendor/qcom/msm7x27"
- }, {
-   "repository": "android_hardware_atheros_ath6kl-compat",
-   "target_path": "hardware/atheros/ath6kl-compat"
- }, {
-   "repository": "android_hardware_atheros_wifi_libs",
-   "target_path": "hardware/atheros/wifi/libs"
- }, {
-   "repository": "android_hardware_broadcom_fmradio",
-   "target_path": "hardware/broadcom/fmradio"
  }
 ]
