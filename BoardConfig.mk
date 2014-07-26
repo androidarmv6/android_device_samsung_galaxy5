@@ -50,6 +50,3 @@ TARGET_PREBUILT_LIBCAMERA := false
 
 ## zRAM size
 BOARD_ZRAM_SIZE := 33554432
-
-## Swap /system and /data so that we have more space for ROM installation
-BOARD_SWAP_SYSTEMDATA := true

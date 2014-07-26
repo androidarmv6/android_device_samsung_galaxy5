@@ -21,6 +21,9 @@
 ## Build the ath6kl-compat driver
 BOARD_WLAN_DEVICE := ath6kl_compat
 
+## Swap /system and /data so that we have more space for ROM installation
+BOARD_SWAP_SYSTEMDATA := true
+
 ## Camera
 PRODUCT_PACKAGES += \
     camera.galaxy5 \
