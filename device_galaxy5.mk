@@ -21,6 +21,10 @@
 ## Build the ath6kl-compat driver
 BOARD_WLAN_DEVICE := ath6kl_compat
 
+## Ramdisk
+PRODUCT_COPY_FILES += \
+    device/samsung/galaxy5/ramdisk/EUROPA.rle:root/EUROPA.rle
+
 ## Swap /system and /data so that we have more space for ROM installation
 BOARD_SWAP_SYSTEMDATA := true
 
